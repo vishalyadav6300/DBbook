@@ -18,8 +18,22 @@
     "@angular/platform-browser": "^15.0.0",
     "@angular/platform-browser-dynamic": "^15.0.0",
     "@angular/router": "^15.0.0",
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^1.36.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-handler": "^1.2.0",
+    "express-session": "^1.17.3",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^7.0.4",
+    "multer": "^1.4.5-lts.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemon": "^2.0.22",
+    "package.json": "^2.0.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
+    "uuid": "^9.0.0",
     "zone.js": "~0.12.0"
   },
   "devDependencies": {
@@ -34,5 +48,9 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "typescript": "~4.8.2"
-  }
+  },
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.0.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }

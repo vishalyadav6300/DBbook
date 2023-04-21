@@ -1,0 +1,72 @@
+adminSchema={
+   username:'',
+   password:''
+}
+
+RoomSchema={
+    name:''
+    type:'',
+    capatcity:'',
+    images:[],//multiple uploads 
+    access:[userSchmeaRef]
+    Resources:{
+        Projector:'',
+        Markers:''
+    }
+}
+
+
+EventsSchema={
+    date:'',
+    time:'',
+    head:'',
+    room:RoomSchemaRef,
+    invitees:[],
+    status:{pending,accepted,completed,rejected}?//Rescheduling option,
+}
+
+userSchmea={
+    image:''
+    username:'',
+    Role:'',
+    password:'',
+    email:'',
+    phoneno:'',
+    limit:''//dynamically reset by the application as date changes,
+    date:''
+    events:[EventsSchema]
+}
+
+
+techinal issuses raising by calling to the concern team
+
+
+login Page:--
+
+Add Employees and Roles:--
+
+Add Rooms:--
+
+Assigning or Rejecting Rooms:--
+
+Rooms display:-- in cards
+
+Each Rooms as it description :--
+
+Booking Room Page :--
+
+Displaying Availabity of rooms:--
+  with calender month weekly and daily
+
+Inviting candiates to the Meeting after accepted the request
+
+Rescheduling the room Booking if it is not Available
+
+Listing the Events in seperate component apart from the calender
+
+After Meeting is over Createaor can create a survey forms to get feedback which can be displayed
+
+notifying users about the Meeting and remainder before starting of the session
+
+
+//Layout of the office
