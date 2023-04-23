@@ -1,0 +1,36 @@
+import { ChangeDetectorRef, EventEmitter, OnInit, TemplateRef } from '@angular/core';
+import { MdbCollapseDirective } from 'mdb-angular-ui-kit/collapse';
+import { Subject } from 'rxjs';
+import * as i0 from "@angular/core";
+export declare class MdbAccordionItemComponent implements OnInit {
+    private _cdRef;
+    _headerTemplate: TemplateRef<any>;
+    _bodyTemplate: TemplateRef<any>;
+    collapse: MdbCollapseDirective;
+    header: string;
+    set collapsed(value: boolean);
+    id: string;
+    _headerId: string;
+    private _isInitialized;
+    private _shouldOpenOnInit;
+    itemShow: EventEmitter<MdbAccordionItemComponent>;
+    itemShown: EventEmitter<MdbAccordionItemComponent>;
+    itemHide: EventEmitter<MdbAccordionItemComponent>;
+    itemHidden: EventEmitter<MdbAccordionItemComponent>;
+    accordionItem: boolean;
+    accordionItemDisplayBlock: boolean;
+    ngOnInit(): void;
+    show$: Subject<MdbAccordionItemComponent>;
+    _collapsed: boolean;
+    _addCollapsedClass: boolean;
+    constructor(_cdRef: ChangeDetectorRef);
+    toggle(): void;
+    show(): void;
+    hide(): void;
+    onShow(): void;
+    onHide(): void;
+    onShown(): void;
+    onHidden(): void;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MdbAccordionItemComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MdbAccordionItemComponent, "mdb-accordion-item", never, { "header": "header"; "collapsed": "collapsed"; "id": "id"; }, { "itemShow": "itemShow"; "itemShown": "itemShown"; "itemHide": "itemHide"; "itemHidden": "itemHidden"; }, ["_headerTemplate", "_bodyTemplate"], never, false, never>;
+}

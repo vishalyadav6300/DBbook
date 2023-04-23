@@ -1,0 +1,34 @@
+import { CdkPortalOutlet, ComponentPortal, TemplatePortal } from '@angular/cdk/portal';
+import { AfterViewInit, ComponentRef, ElementRef, EmbeddedViewRef, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { MdbModalConfig } from './modal-config';
+import { ConfigurableFocusTrapFactory } from '@angular/cdk/a11y';
+import { Subject } from 'rxjs';
+import * as i0 from "@angular/core";
+export declare class MdbModalContainerComponent implements OnInit, AfterViewInit, OnDestroy {
+    private _document;
+    _elementRef: ElementRef;
+    private _renderer;
+    private _focusTrapFactory;
+    _portalOutlet: CdkPortalOutlet;
+    modalDialog: ElementRef;
+    readonly _destroy$: Subject<void>;
+    readonly backdropClick$: Subject<MouseEvent>;
+    _config: MdbModalConfig;
+    BACKDROP_TRANSITION: number;
+    MODAL_TRANSITION: number;
+    private _previouslyFocusedElement;
+    private _focusTrap;
+    modal: boolean;
+    get hasAnimation(): boolean;
+    constructor(_document: any, _elementRef: ElementRef, _renderer: Renderer2, _focusTrapFactory: ConfigurableFocusTrapFactory);
+    ngOnInit(): void;
+    ngAfterViewInit(): void;
+    ngOnDestroy(): void;
+    private _updateContainerClass;
+    _close(): void;
+    _restoreScrollbar(): void;
+    attachComponentPortal<T>(portal: ComponentPortal<T>): ComponentRef<T>;
+    attachTemplatePortal<C>(portal: TemplatePortal<C>): EmbeddedViewRef<C>;
+    static ɵfac: i0.ɵɵFactoryDeclaration<MdbModalContainerComponent, never>;
+    static ɵcmp: i0.ɵɵComponentDeclaration<MdbModalContainerComponent, "mdb-modal-container", never, {}, {}, never, never, false, never>;
+}

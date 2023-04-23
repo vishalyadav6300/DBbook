@@ -1,0 +1,162 @@
+{
+  "name": "mdb-angular-ui-kit",
+  "repository": "https://github.com/mdbootstrap/mdb-angular-ui-kit",
+  "homepage": "https://mdbootstrap.com/docs/b5/angular/",
+  "author": "MDBootstrap",
+  "license": "MIT",
+  "version": "4.0.0",
+  "peerDependencies": {
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/animations": "^15.0.0",
+    "@angular/forms": "^15.0.0",
+    "@angular/cdk": "^15.0.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "exports": {
+    "./assets/scss/mdb.scss": {
+      "sass": "./assets/scss/mdb.scss"
+    },
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "types": "./index.d.ts",
+      "esm2020": "./esm2020/mdb-angular-ui-kit.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit.mjs"
+    },
+    "./accordion": {
+      "types": "./accordion/index.d.ts",
+      "esm2020": "./esm2020/accordion/mdb-angular-ui-kit-accordion.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-accordion.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-accordion.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-accordion.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-accordion.mjs"
+    },
+    "./carousel": {
+      "types": "./carousel/index.d.ts",
+      "esm2020": "./esm2020/carousel/mdb-angular-ui-kit-carousel.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-carousel.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-carousel.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-carousel.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-carousel.mjs"
+    },
+    "./checkbox": {
+      "types": "./checkbox/index.d.ts",
+      "esm2020": "./esm2020/checkbox/mdb-angular-ui-kit-checkbox.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-checkbox.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-checkbox.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-checkbox.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-checkbox.mjs"
+    },
+    "./collapse": {
+      "types": "./collapse/index.d.ts",
+      "esm2020": "./esm2020/collapse/mdb-angular-ui-kit-collapse.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-collapse.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-collapse.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-collapse.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-collapse.mjs"
+    },
+    "./dropdown": {
+      "types": "./dropdown/index.d.ts",
+      "esm2020": "./esm2020/dropdown/mdb-angular-ui-kit-dropdown.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-dropdown.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-dropdown.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-dropdown.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-dropdown.mjs"
+    },
+    "./forms": {
+      "types": "./forms/index.d.ts",
+      "esm2020": "./esm2020/forms/mdb-angular-ui-kit-forms.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-forms.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-forms.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-forms.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-forms.mjs"
+    },
+    "./modal": {
+      "types": "./modal/index.d.ts",
+      "esm2020": "./esm2020/modal/mdb-angular-ui-kit-modal.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-modal.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-modal.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-modal.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-modal.mjs"
+    },
+    "./popover": {
+      "types": "./popover/index.d.ts",
+      "esm2020": "./esm2020/popover/mdb-angular-ui-kit-popover.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-popover.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-popover.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-popover.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-popover.mjs"
+    },
+    "./radio": {
+      "types": "./radio/index.d.ts",
+      "esm2020": "./esm2020/radio/mdb-angular-ui-kit-radio.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-radio.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-radio.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-radio.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-radio.mjs"
+    },
+    "./range": {
+      "types": "./range/index.d.ts",
+      "esm2020": "./esm2020/range/mdb-angular-ui-kit-range.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-range.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-range.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-range.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-range.mjs"
+    },
+    "./ripple": {
+      "types": "./ripple/index.d.ts",
+      "esm2020": "./esm2020/ripple/mdb-angular-ui-kit-ripple.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-ripple.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-ripple.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-ripple.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-ripple.mjs"
+    },
+    "./scrollspy": {
+      "types": "./scrollspy/index.d.ts",
+      "esm2020": "./esm2020/scrollspy/mdb-angular-ui-kit-scrollspy.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-scrollspy.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-scrollspy.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-scrollspy.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-scrollspy.mjs"
+    },
+    "./tabs": {
+      "types": "./tabs/index.d.ts",
+      "esm2020": "./esm2020/tabs/mdb-angular-ui-kit-tabs.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-tabs.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-tabs.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-tabs.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-tabs.mjs"
+    },
+    "./tooltip": {
+      "types": "./tooltip/index.d.ts",
+      "esm2020": "./esm2020/tooltip/mdb-angular-ui-kit-tooltip.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-tooltip.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-tooltip.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-tooltip.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-tooltip.mjs"
+    },
+    "./validation": {
+      "types": "./validation/index.d.ts",
+      "esm2020": "./esm2020/validation/mdb-angular-ui-kit-validation.mjs",
+      "es2020": "./fesm2020/mdb-angular-ui-kit-validation.mjs",
+      "es2015": "./fesm2015/mdb-angular-ui-kit-validation.mjs",
+      "node": "./fesm2015/mdb-angular-ui-kit-validation.mjs",
+      "default": "./fesm2020/mdb-angular-ui-kit-validation.mjs"
+    }
+  },
+  "module": "fesm2015/mdb-angular-ui-kit.mjs",
+  "es2020": "fesm2020/mdb-angular-ui-kit.mjs",
+  "esm2020": "esm2020/mdb-angular-ui-kit.mjs",
+  "fesm2020": "fesm2020/mdb-angular-ui-kit.mjs",
+  "fesm2015": "fesm2015/mdb-angular-ui-kit.mjs",
+  "typings": "index.d.ts",
+  "sideEffects": false
+}

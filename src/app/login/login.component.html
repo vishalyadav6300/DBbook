@@ -1,0 +1,50 @@
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            class="img-fluid" alt="Sample image">
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-3">
+          <form [formGroup]="LoginObj" (ngSubmit)="onSubmit()">
+            <h1 class="text-center"> Login </h1>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+             <input type="text" id="form3Example3" class="form-control form-control-lg"
+                placeholder="Enter a username" formControlName="username" />
+            </div>
+
+            <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="mx-5 text-danger">
+                <p *ngIf="username?.errors?.['required']">
+                    *username is required.
+                </p>
+                  <p *ngIf="username?.errors?.['minlength']">
+                    *username must be at least 6 characters long.
+                  </p>
+              </div>
+  
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <input type="password" id="form3Example4" class="form-control form-control-lg"
+                placeholder="Enter password"  formControlName="password"/>
+            </div>
+
+            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="mx-5 text-danger">
+                <p *ngIf="password?.errors?.['required']">
+                    *password is required.
+                </p>
+                  <p *ngIf="password?.errors?.['pattern']">
+                    *password is too weak
+                  </p>
+              </div>
+  
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button type="submit" class="btn btn-primary btn-md"
+                style="padding-left: 2.5rem; padding-right: 2.5rem;" [disabled]="(!username?.valid)||(!password?.valid)">Login</button>
+            </div>
+  
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>

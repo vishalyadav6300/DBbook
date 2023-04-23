@@ -1,16 +1,21 @@
 const mongoose=require('mongoose');
 
 const roomSchema=mongoose.Schema({
-    name:{
+    roomName:{
         type:String
     },
-    type:{
+    roomType:{
         type:String
     },
-    images:[{
+    capacity:{
+        type:Number
+    },
+    image:{
         type:String
-    }],
-    access:[{type:String}]
+    },
+    access:[{
+        type:String
+    }]
 })
 
 const roomModel=mongoose.model('room',roomSchema);

@@ -1,0 +1,190 @@
+<!-- <div class="container">
+  <div class="row d-flex justify-content-center align-items-center ">
+    <div class="col">
+      <div class="card card-registration my-4">
+        <div class="row g-0 h-50">
+          <div class="col-xl-6 d-none d-xl-block">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+              alt="Sample photo" class="img-fluid rounded"
+              style=" width:100%;height: 79% !important;border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+          </div>
+          <div class="col-xl-6">
+            <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+              <div class="card-body p-md-5 text-black">
+                <h5 class="mb-5 text-uppercase text-white w-50 rounded bg-danger mx-auto p-2 text-center">Employee Add</h5 >
+
+                <div class="row ">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline mx-auto">
+                      <label for="file-upload" class="custom-file-upload form-label mt-2">
+                        <i class="fa fa-cloud-upload text-primary"></i> Upload profile pic
+                      </label>
+                      <input id="file-upload" class="form-control form-control-lg" type="file" style="display: none;"  (change)="selectFile($event)" />
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline border">
+                      <input type="text" id="employeename" name="employeename" class="form-control form-control-lg" formControlName="employeeName" />
+                      <label class="form-label" for="employeename">Employee name</label>
+                    </div>
+                    <div *ngIf="employeeName?.invalid && (employeeName?.dirty || employeeName?.touched)" class="text-danger">
+                      <p *ngIf="employeeName?.errors?.['required'] ">*name is must</p>
+                      <p *ngIf="employeeName?.errors?.['minlength'] ">*must be 6 character long</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline border">
+                        <input type="email" id="email" class="form-control form-control-lg" formControlName="email"/>
+                        <label class="form-label" for="email">Email</label>
+                      </div>
+                      <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
+                        <p *ngIf="email?.errors?.['required'] text-start">*email is must</p>
+                        <p *ngIf="email?.errors?.['email']">*email is invalid.</p>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline border">
+                        <input type="text" id="phoneno" class="form-control form-control-lg" formControlName="phoneNumber" />
+                        <label class="form-label" for="phoneno">Phone number</label>
+                      </div>
+                      <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="text-danger">
+                        <p *ngIf="phoneNumber?.errors?.['required']">*phoneno is must</p>
+                        <p *ngIf="phoneNumber?.errors?.['pattern']">*phoneno is invalid.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                
+
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+
+                    <select class="select form-control" formControlName="department">
+                      <option value="Department">Department</option>
+                      <option value="Product development">Product development</option>
+                      <option value="Sales marketing">Sales marketing</option>
+                      <option value="Finanace management">Finanace management</option>
+                    </select>
+                    <div *ngIf="department?.invalid && (department?.dirty || department?.touched)" class="text-danger">
+                      <p *ngIf="department?.errors?.['required']">*department is must</p>
+                    </div>
+
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <select class="select form-control" formControlName="module">
+                      <option value="Module" >Module</option>
+                      <option value="Core">Core</option>
+                      <option value="Workflows">Workflows</option>
+                      <option value="Payroll">Payroll</option>
+                      <option value="Attandance">Attandance</option>
+                      <option value="Recruitment">Recruitment</option>
+                    </select>
+                    <div *ngIf="module?.invalid && (module?.dirty || module?.touched)" class="text-danger">
+                      <p *ngIf="module?.errors?.['required']">*module is must</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                    <div class="col mb-4">
+  
+                      <select class="select form-control" formControlName="position">
+                        <option value="Position">Position</option>
+                        <option value="HOD">HOD</option>
+                        <option value="Team Lead">Team Lead</option>
+                        <option value="Intern">Intern</option>
+                        <option value="Product Lead">Product Lead</option>
+                        <option value="Project Manager">Project Manager</option>
+                        <option value="Engineer Manager">Engineer Manager</option>
+                      </select>
+                      <div *ngIf="position?.invalid && (position?.dirty || position?.touched)" class="text-danger">
+                        <p *ngIf="position?.errors?.['required']">*position is must</p>
+                      </div>
+                    </div>
+                  </div>
+
+
+                <div class="d-flex justify-content-center pt-3">
+                  <button type="button" class="btn btn-danger btn-lg">Reset all</button>
+                  <button type="submit" class="btn btn-warning btn-lg ms-2" [disabled]="(!employeeName?.valid) || (!email?.valid) || (!phoneNumber?.valid)|| (!password?.valid)|| (!confirmPassword?.valid) ">Submit form</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <h2 class="text-center">Room Adding Form</h2>
+  <form [formGroup]="roomBookingForm" (ngSubmit)="onSubmit()" class="needs-validation w-50 mx-auto" >
+    <div class="form-group">
+      <label class="form-label" for="name">Room Name:</label>
+      <input type="text" class="form-control form-input" id="name" formControlName="roomName">
+     <div class="text-danger" *ngIf="roomName?.invalid && (roomName?.dirty || roomName?.touched)">
+        <p *ngIf="roomName?.errors?.['required']">* room name is required.</p>
+        <p *ngIf="roomName?.errors?.['minlength']">*room name must be at least 6 characters long.</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="roomType">Room Type:</label>
+      <select class="form-control form-input" id="roomType" formControlName="roomType" >
+        <option value="">-- Select Room Type --</option>
+        <option value="Conference Room">Conference Room</option>
+        <option value="Meeting Room">Meeting Room</option>
+        <option value="Training Room">Training Room</option>
+        <option value="Breakout Room">Breakout Room</option>
+        <option value="Board Room">Board Room</option>
+        <option value="Interview Room">Interview Room</option>
+        <option value="Presentation Room">Presentation Room</option>
+        <option value="Video Conference Room">Video Conference Room</option>
+        <option value="Focus Room">Focus Room</option>
+        <option value="Collaboration Room">Collaboration Room</option>
+      </select>
+      <div class="text-danger" *ngIf="roomType?.invalid && (roomType?.dirty || roomType?.touched)">
+        *Room type is required.
+      </div>
+    </div> 
+    <label for="access">Access:</label>
+    <div class="form-group" id="access" formArrayName="access" *ngFor="let acc of access?.controls;let i=index">  
+      <select class="form-control select"  [formControlName]="i" required>
+          <option value="">Access</option>
+          <option value="HOD">HOD</option>
+          <option value="Team Lead">Team Lead</option>
+          <option value="Intern">Intern</option>
+          <option value="Product Lead">Product Lead</option>
+          <option value="Project Manager">Project Manager</option>
+          <option value="Engineer Manager">Engineer Manager</option>
+      </select>
+      <div class="text-danger" *ngIf="access.controls[i]?.invalid && (access.controls[i]?.dirty || access.controls[i]?.touched)">
+        * Access is required.
+      </div>
+    </div>
+    <button class="mt-2 btn btn-primary text-end" type="button" (click)="addAccess()" [disabled]="access.invalid"> Add</button>
+    <!-- <div class="text-danger" *ngIf="access?.invalid && (access?.dirty || access?.touched)">
+      * At least one position is required.
+    </div> -->
+    <div class="form-group">
+      <label for="capacity">Capacity:</label>
+      <input type="number" class="form-control" id="capacity" formControlName="capacity" required>
+      <div class="text-danger" *ngIf="capacity?.invalid && (capacity?.dirty || capacity?.touched)">
+        <div *ngIf="capacity?.errors?.['required']">Capacity is required.</div>
+        <div *ngIf="capacity?.errors?.['minlength']">Capacity must be at least 1.</div>
+      </div>
+    </div>
+    <label for="image">Image:</label>
+    <div class="form-group"   >
+      <input type="file" class="form-control" id="image" formControlName="image" (change)="selectFile($event)" >
+      <div class="text-danger" *ngIf="image?.invalid && (image?.dirty || image?.touched)">
+        image are required.
+      </div>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary text-center px-5 mt-3">Submit</button>
+    </div>
+     </form>
+</div>

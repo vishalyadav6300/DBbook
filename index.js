@@ -14,6 +14,10 @@ const http=require("http").createServer(app)
 
 require("dotenv").config()
 
+//importing modules
+
+const adminModel=require('./Models/adminModel').adminModel
+
 //import express async-handler
 const errorHandler=require('express-async-handler')
 
@@ -34,6 +38,18 @@ mongoose.connect(process.env.MONGOURL).then(
 //Middleware
 app.use(express.json())
 
+//importing routes
+const employeeRoute=require('./Routes/employeeRoute').employeeRoute
+
+const roomRoute=require('./Routes/roomRoute').roomRoute
+app.use('/employee',employeeRoute);
+app.use('/room',roomRoute);
+
+app.post('/',async(req,res)=>{
+    let adminObj=req.body;
+    await adminModel.create(adminObj);
+    res.send({message:"sent"})
+})
 
 //error handling for invalid path
 app.use((req,res,next)=>{
