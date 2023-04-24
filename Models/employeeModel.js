@@ -1,5 +1,4 @@
 const mongoose=require('mongoose');
-const eventModel=require('./EventsModel').eventModel
 const employeeSchema=mongoose.Schema({
     profilePic:{
         type:String
@@ -38,12 +37,10 @@ const employeeSchema=mongoose.Schema({
     date:{
         type:Date,
         default:Date.now()
-    }
-    // ,
-    // events:[{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref:eventModel
-    // }]
+    },
+    Events:[{
+        type:mongoose.Schema.Types.ObjectId
+    }]
 })
 
 const employeeModel=mongoose.model('employee',employeeSchema);

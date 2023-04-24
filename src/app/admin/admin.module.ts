@@ -7,13 +7,15 @@ import { AddRoomComponent } from './add-room/add-room.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AllRoomsComponent } from './all-rooms/all-rooms.component';
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     AddRoomComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    AllRoomsComponent
   ],
   imports: [
     CommonModule,

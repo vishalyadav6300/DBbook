@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-center ">
       <div class="col">
         <div class="card card-registration my-4">
@@ -35,9 +35,8 @@
                   </div>
                   <div class="row">
                       <div class="col-md-6 mb-4">
-                        <div class="form-outline border">
-                          <input type="email" id="email" class="form-control form-control-lg" formControlName="email"/>
-                          <label class="form-label" for="email">Email</label>
+                        <div class="border">
+                          <input type="email" id="email" class="form-control form-control-lg" formControlName="email" placeholder="Email"/>
                         </div>
                         <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
                           <p *ngIf="email?.errors?.['required'] text-start">*email is must</p>
@@ -45,9 +44,8 @@
                         </div>
                       </div>
                       <div class="col-md-6 mb-4">
-                        <div class="form-outline border">
-                          <input type="text" id="phoneno" class="form-control form-control-lg" formControlName="phoneNumber" />
-                          <label class="form-label" for="phoneno">Phone number</label>
+                        <div class="">
+                          <input type="text" id="phoneno" class="form-control form-control-lg" formControlName="phoneNumber" placeholder="phoneNumber"/>
                         </div>
                         <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="text-danger">
                           <p *ngIf="phoneNumber?.errors?.['required']">*phoneno is must</p>

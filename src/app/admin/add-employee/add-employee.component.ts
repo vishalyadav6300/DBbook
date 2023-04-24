@@ -14,7 +14,9 @@ export class AddEmployeeComponent implements OnInit {
   employeeForm!: FormGroup;
   submitted=false
 
-  constructor(private fb:FormBuilder,private adminService:AdminService){}
+  constructor(private fb:FormBuilder,private adminService:AdminService){
+    console.log("hijjk")
+  }
 
   ngOnInit(): void {
     this.employeeForm= this.fb.group({
