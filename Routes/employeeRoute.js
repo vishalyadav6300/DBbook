@@ -12,4 +12,5 @@ employeeRoute.post('/add-employee',upload.single('profilePic'),empolyeeControlle
 
 employeeRoute.get('/all-employee',empolyeeController.allEmployees);
 
+
 module.exports={employeeRoute}

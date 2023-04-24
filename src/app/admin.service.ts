@@ -10,10 +10,10 @@ export class AdminService {
   constructor(private hc:HttpClient) { }
 
   addEmployee(employeeObj:Object):Observable<any>{
-    return this.hc.post('http://localhost:3005/employee/add-employee',employeeObj);
+    return this.hc.post('http://localhost:3009/employee/add-employee',employeeObj);
   }
 
   addRoom(roomObj:Object):Observable<any>{
-    return this.hc.post('http://localhost:3005/room/add-room',roomObj);
+    return this.hc.post('http://localhost:3009/room/add-room',roomObj);
   }
 }

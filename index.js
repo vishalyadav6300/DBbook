@@ -42,8 +42,11 @@ app.use(express.json())
 const employeeRoute=require('./Routes/employeeRoute').employeeRoute
 
 const roomRoute=require('./Routes/roomRoute').roomRoute
+
+const eventRoute=require('./Routes/eventRoute').eventRoute
 app.use('/employee',employeeRoute);
 app.use('/room',roomRoute);
+app.use('/event',eventRoute);
 
 app.post('/',async(req,res)=>{
     let adminObj=req.body;
