@@ -18,13 +18,10 @@ export class AddRoomComponent implements OnInit {
     this.roomBookingForm = this.formBuilder.group({
       roomName: ['', [Validators.required, Validators.minLength(6)]],
       roomType: ['', [Validators.required, Validators.minLength(3)]],
-      access: this.formBuilder.array([this.formBuilder.control('')],[Validators.maxLength(2)]),
+      access: this.formBuilder.array([this.formBuilder.control('')],[Validators.maxLength(5)]),
       capacity: [null, [Validators.required, Validators.min(1)]] ,
       image:['',Validators.required]
     });  
-    // this.imageUploadForm = this.formBuilder.group({
-    //   images: this.formBuilder.array([this.formBuilder.control('')], Validators.required)
-    // });
   }
 
   get roomName(){

@@ -16,12 +16,12 @@ export class LoginComponent {
     private route: Router) { }
 
   LoginObj = this.fb.group({
-    username: ['', [Validators.required, Validators.minLength(6)]],
+    email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]]
   })
 
-  get username() {
-    return this.LoginObj.get('username');
+  get email() {
+    return this.LoginObj.get('email');
   }
 
   get password() {
@@ -29,9 +29,7 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    console.log(this.LoginObj.value)
     this.employeeService.toLogin(this.LoginObj.value).subscribe(res => {
-      console.log(res);
       if (res.message == "success") {
         this.route.navigateByUrl("user/home")
       }
