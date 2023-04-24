@@ -1,15 +1,50 @@
-.divider:after,
-.divider:before {
-content: "";
-flex: 1;
-height: 1px;
-background: #eee;
+.form-control:focus {
+  border: 1px solid black;
+  border-color: black;
+  box-shadow: 1px 1px 5px black;
 }
-.h-custom {
-height: calc(100% - 73px);
+
+.background-radial-gradient {
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(650px circle at 0% 0%,
+      hsl(0, 0%, 15%) 15%,
+      hsl(0, 0%, 35%) 35%,
+      hsl(0, 0%, 75%) 75%,
+      hsl(0, 0%, 80%) 80%,
+      transparent 100%),
+    radial-gradient(1250px circle at 100% 100%,
+      hsl(0, 0%, 15%) 15%,
+      hsl(0, 0%, 35%) 35%,
+      hsl(0, 0%, 75%) 75%,
+      hsl(0, 0%, 80%) 80%,
+      transparent 100%);
 }
-@media (max-width: 450px) {
-.h-custom {
-height: 100%;
+
+#radius-shape-1 {
+  height: 220px;
+  width: 220px;
+  top: -60px;
+  left: -130px;
+  background: radial-gradient(white, black);
+  overflow: hidden;
 }
+
+#radius-shape-2 {
+  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
+  bottom: -60px;
+  right: -110px;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(white, black);
+  overflow: hidden;
+}
+
+.bg-glass {
+  background-color: hsla(0, 0%, 100%, 0.4) !important;
+  backdrop-filter: saturate(100%) blur(25px);
+}
+
+:disabled{
+  color: white;
+  background-color: black;
 }
