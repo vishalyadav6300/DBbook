@@ -1,50 +1,68 @@
-<section class="vh-100">
-    <div class="container-fluid h-custom">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-md-9 col-lg-6 col-xl-5">
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            class="img-fluid" alt="Sample image">
-        </div>
-        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1 mt-3">
-          <form [formGroup]="LoginObj" (ngSubmit)="onSubmit()">
-            <h1 class="text-center"> Login </h1>
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-             <input type="text" id="form3Example3" class="form-control form-control-lg"
-                placeholder="Enter a username" formControlName="username" />
-            </div>
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">  
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-2"></div>
+      <div class="col-lg-8 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
 
-            <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="mx-5 text-danger">
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+              <h5 class="text-dark text-center"><b>LOGIN FORM</b></h5>
+            <form [formGroup]="LoginObj" (ngSubmit)="onSubmit()">
+              <!-- Email input -->
+              <div class="">
+                <input type="email" id="form3Example3" class="form-control" placeholder="Email" formControlName="username"/>
+              </div>
+              <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="mx-2 text-danger">
                 <p *ngIf="username?.errors?.['required']">
-                    *username is required.
+                    *email is required.
                 </p>
                   <p *ngIf="username?.errors?.['minlength']">
                     *username must be at least 6 characters long.
                   </p>
               </div>
-  
-            <!-- Password input -->
-            <div class="form-outline mb-3">
-              <input type="password" id="form3Example4" class="form-control form-control-lg"
-                placeholder="Enter password"  formControlName="password"/>
-            </div>
 
-            <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="mx-5 text-danger">
+              <!-- Password input -->
+              <div class="mt-4">
+                <input type="password" id="form3Example4" class="form-control" placeholder="Password" formControlName="password"/>
+              </div>
+              <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="mx-2 text-danger">
                 <p *ngIf="password?.errors?.['required']">
                     *password is required.
                 </p>
-                  <p *ngIf="password?.errors?.['pattern']">
-                    *password is too weak
-                  </p>
               </div>
-  
-            <div class="text-center text-lg-start mt-4 pt-2">
-              <button type="submit" class="btn btn-primary btn-md"
-                style="padding-left: 2.5rem; padding-right: 2.5rem;" [disabled]="(!username?.valid)||(!password?.valid)">Login</button>
-            </div>
-  
-          </form>
+
+              <!-- Submit button -->
+              <button type="submit" class="mt-4 btn btn-black btn-rounded btn-block mb-4" [disabled]="(!username?.valid)||(!password?.valid)">
+                log in
+              </button>
+
+              <!-- Register buttons -->
+              <div class="text-center">
+                <button type="button" class="btn btn-black btn-floating mx-1">
+                  <i class="fab fa-facebook-f"></i>
+                </button>
+
+                <button type="button" class="btn btn-black btn-floating mx-1">
+                  <i class="fab fa-google"></i>
+                </button>
+
+                <button type="button" class="btn btn-black btn-floating mx-1">
+                  <i class="fab fa-twitter"></i>
+                </button>
+
+                <button type="button" class="btn btn-black btn-floating mx-1">
+                  <i class="fab fa-github"></i>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
+      <div class="col-lg-2"></div>
     </div>
-  </section>
+  </div>
+</section>
+<!-- Section: Design Block -->
