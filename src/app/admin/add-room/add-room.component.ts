@@ -58,7 +58,7 @@ export class AddRoomComponent implements OnInit {
     let formData=new FormData();
     formData.append("image",this.file,this.file.name)
     formData.append('roomObj',JSON.stringify(this.roomBookingForm.value))
-    
+    console.log(formData);
     this.adminService.addRoom(formData).subscribe(res=>{
       console.log(res);
     })

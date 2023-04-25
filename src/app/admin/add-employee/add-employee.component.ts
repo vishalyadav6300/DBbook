@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin.service';
 
 
@@ -14,8 +15,8 @@ export class AddEmployeeComponent implements OnInit {
   employeeForm!: FormGroup;
   submitted=false
 
-  constructor(private fb:FormBuilder,private adminService:AdminService){
-    console.log("hijjk")
+  constructor(private fb:FormBuilder,private adminService:AdminService,
+    private route:Router){
   }
 
   ngOnInit(): void {
@@ -34,12 +35,9 @@ export class AddEmployeeComponent implements OnInit {
   }
   );
   }
-
   file!:File;
-
   selectFile(event:any){
      this.file= event.target.files[0]
-    
   }
 
   MustMatch(password:string,confirmPassword:string){
@@ -94,13 +92,18 @@ export class AddEmployeeComponent implements OnInit {
     formData.append("employeeObj",JSON.stringify(this.employeeForm.value))
 
     this.adminService.addEmployee(formData).subscribe(res=>{
-      console.log(res);
+      if(res.message=="Employee created"){
+        alert("added successfully")
+        this.route.navigateByUrl("admin")
+      }
+      else{
+        alert("please fill all details")
+      }
     })
     
   }
-
-  onReset(){
-    this.employeeForm.reset();
-  }
+  // onReset(){
+  //   this.employeeForm.reset();
+  // }
 
 }

@@ -3,7 +3,35 @@
     line-height: 2.15;
     padding-left: .75em;
     padding-right: .75em;
-    }
-    .card-registration .select-arrow {
+}
+
+.card-registration .select-arrow {
     top: 13px;
-    }
+}
+
+.bg-glass {
+    background-color: hsla(0, 0%, 100%, 0.4) !important;
+    backdrop-filter: saturate(100%) blur(25px);
+}
+
+.form-control:focus {
+    border: 1px solid black;
+    border-color: black;
+    box-shadow: 1px 1px 5px black;
+}
+
+.background-radial-gradient {
+    background-color: hsl(218, 41%, 15%);
+    background-image: radial-gradient(650px circle at 0% 0%,
+            hsl(0, 0%, 15%) 15%,
+            hsl(0, 0%, 35%) 35%,
+            hsl(0, 0%, 75%) 75%,
+            hsl(0, 0%, 80%) 80%,
+            transparent 100%),
+        radial-gradient(1250px circle at 100% 100%,
+            hsl(0, 0%, 15%) 15%,
+            hsl(0, 0%, 35%) 35%,
+            hsl(0, 0%, 75%) 75%,
+            hsl(0, 0%, 80%) 80%,
+            transparent 100%);
+}

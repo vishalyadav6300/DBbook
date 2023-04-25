@@ -53,7 +53,7 @@
       </div>
     </div>
     <label for="image">Image:</label>
-    <div class="form-group"   >
+    <div class="form-group">
       <input type="file" class="form-control" id="image" formControlName="image" (change)="selectFile($event)" >
       <div class="text-danger" *ngIf="image?.invalid && (image?.dirty || image?.touched)">
         image are required.

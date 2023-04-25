@@ -9,6 +9,8 @@ const bcryptjs = require('bcryptjs')
 const { v4: uuidv4 } = require("uuid")
 const app = express()
 const path = require("path")
+//import json web token
+const jwt = require("jsonwebtoken")
 
 const http = require("http").createServer(app)
 
@@ -42,25 +44,43 @@ app.use(express.json())
 //importing routes
 const employeeRoute = require('./Routes/employeeRoute').employeeRoute
 const roomRoute = require('./Routes/roomRoute').roomRoute
+const eventRoute = require('./Routes/eventRoute').eventRoute
 
 
 app.use('/employee', employeeRoute);
 app.use('/room', roomRoute);
-app.post('/login',async(req,res)=>{
-    let userobj=req.body
-    let user=await employeeModel.findOne({email:userobj.email})
-    if(user){
-        if(user.password==userobj.password){
-            res.send({message:"success"})
+app.use('/event', eventRoute);
+app.post('/login', async (req, res) => {
+    let userobj = req.body
+    let user = await employeeModel.findOne({ email: userobj.email })
+    let admin = await adminModel.findOne({ email: userobj.email })
+    if (admin) {
+        if (admin.password == userobj.password) {
+            let token = jwt.sign({ email: userobj.email, type: "admin" },
+                process.env.SECRETKEYADMIN, { expiresIn: "1d" })
+            res.send({ message: "admin logged success", adminobj: admin, token: token })
         }
-        else{
-            res.send({message:"invalid password"})
+        else {
+            res.send({ message: "invalid password" })
         }
     }
-    else{
-        res.send({message:"invalid credantials"})
+    else {
+        if (user) {
+            let token=jwt.sign({email:userobj.email,type:"user"},
+            process.env.SECRETKEYUSER,{expiresIn:"1d"})
+            if (user.password == userobj.password) {
+                res.send({ message: "user logged success", userobj: user,token:token })
+            }
+            else {
+                res.send({ message: "invalid password" })
+            }
+        }
+        else {
+            res.send({ message: "invalid credantials" })
+        }
     }
 })
+
 app.post('/', async (req, res) => {
     let adminObj = req.body;
     await adminModel.create(adminObj);

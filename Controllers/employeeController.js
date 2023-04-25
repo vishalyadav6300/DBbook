@@ -1,12 +1,9 @@
 //importing employee model
 const employeeModel=require('./../Models/employeeModel').employeeModel
-
+const eventModel=require('./../Models/EventsModel').eventModel
 
 async function addEmployee(req,res){
     let employeeObj=JSON.parse(req.body.employeeObj);
-    // console.log(req.body);
-    // console.log(employeeObj);
-    // console.log(req.file.path);
     employeeObj['profilePic']=req.file.path;
     let employee=await employeeModel.findOne({email:employeeObj.email});
 
@@ -26,4 +23,13 @@ async function allEmployees(req,res){
     res.send({message:'successfully sent',employees:employees})
 }
 
-module.exports={addEmployee,allEmployees}
+async function getEmployee(req,res){
+    let employee=req.body;
+
+    let emploeeObj=await employeeModel.find({employeeName:employee.employeeName}).populate('Events','',eventModel);
+
+    res.send({message:'sent',emploeeObj:emploeeObj})
+
+}
+
+module.exports={addEmployee,allEmployees,getEmployee}

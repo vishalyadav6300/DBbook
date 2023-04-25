@@ -1,7 +1,8 @@
-<div class="container mt-5">
+<section class="background-radial-gradient overflow-hidden">
+  <div class="container mt-5">
     <div class="row d-flex justify-content-center align-items-center ">
       <div class="col">
-        <div class="card card-registration my-4">
+        <div class="card card-registration my-4 bg-glass">
           <div class="row g-0 h-50">
             <div class="col-xl-6 d-none d-xl-block">
               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
@@ -11,21 +12,16 @@
             <div class="col-xl-6">
               <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
                 <div class="card-body p-md-5 text-black">
-                  <h5 class="mb-5 text-uppercase text-white w-50 rounded bg-danger mx-auto p-2 text-center">Employee Add</h5 >
-  
+                  <h5 class="mb-5 text-black mx-auto text-center"><b style="font-size: 2rem;">ADD EMPLOYEE</b></h5>
                   <div class="row ">
                     <div class="col-md-6 mb-4">
-                      <div class="form-outline mx-auto">
-                        <label for="file-upload" class="custom-file-upload form-label mt-2">
-                          <i class="fa fa-cloud-upload text-primary"></i> Upload profile pic
-                        </label>
-                        <input id="file-upload" class="form-control form-control-lg" type="file" style="display: none;"  (change)="selectFile($event)" />
+                      <div class="mx-auto">
+                        <input id="file-upload" class="form-control" type="file"   (change)="selectFile($event)" />
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
-                      <div class="form-outline border">
-                        <input type="text" id="employeename" name="employeename" class="form-control form-control-lg" formControlName="employeeName" />
-                        <label class="form-label" for="employeename">Employee name</label>
+                      <div class="">
+                        <input type="text" id="employeename" name="employeename" class="form-control" formControlName="employeeName" placeholder="Employee Name"/>
                       </div>
                       <div *ngIf="employeeName?.invalid && (employeeName?.dirty || employeeName?.touched)" class="text-danger">
                         <p *ngIf="employeeName?.errors?.['required'] ">*name is must</p>
@@ -35,8 +31,8 @@
                   </div>
                   <div class="row">
                       <div class="col-md-6 mb-4">
-                        <div class="border">
-                          <input type="email" id="email" class="form-control form-control-lg" formControlName="email" placeholder="Email"/>
+                        <div class="">
+                          <input type="email" id="email" class="form-control" formControlName="email" placeholder="Email"/>
                         </div>
                         <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
                           <p *ngIf="email?.errors?.['required'] text-start">*email is must</p>
@@ -45,7 +41,7 @@
                       </div>
                       <div class="col-md-6 mb-4">
                         <div class="">
-                          <input type="text" id="phoneno" class="form-control form-control-lg" formControlName="phoneNumber" placeholder="phoneNumber"/>
+                          <input type="text" id="phoneno" class="form-control" formControlName="phoneNumber" placeholder="Phone Number"/>
                         </div>
                         <div *ngIf="phoneNumber?.invalid && (phoneNumber?.dirty || phoneNumber?.touched)" class="text-danger">
                           <p *ngIf="phoneNumber?.errors?.['required']">*phoneno is must</p>
@@ -130,9 +126,8 @@
   
                     <div class="row">
                       <div class="col-md-6 mb-4">
-                        <div class="form-outline">
-                          <input type="password" id="password" class="form-control form-control-lg border" formControlName="password"/>
-                          <label class="form-label" for="password">Password</label>
+                        <div class="">
+                          <input type="password" id="password" class="form-control" formControlName="password" placeholder="Password"/>
                         </div>
                         <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
                           <p *ngIf="password?.errors?.['required']">*password is must</p>
@@ -142,9 +137,8 @@
                       </div>
   
                       <div class="col-md-6 mb-4">
-                          <div class="form-outline">
-                            <input type="password" id="cpassword" class="form-control form-control-lg border" formControlName="confirmPassword" />
-                            <label class="form-label" for="cpassword">Confirm Password</label>
+                          <div class="">
+                            <input type="password" id="cpassword" class="form-control" formControlName="confirmPassword" placeholder="confirm Password"/>
                           </div>
                           <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)" class="text-danger">
                             <p *ngIf="confirmPassword?.errors?.['required']">*confirmPassword is must</p>
@@ -154,8 +148,8 @@
                     </div>
   
                   <div class="d-flex justify-content-center pt-3">
-                    <button type="button" class="btn btn-danger btn-lg">Reset all</button>
-                    <button type="submit" class="btn btn-warning btn-lg ms-2" [disabled]="(!employeeName?.valid) || (!email?.valid) || (!phoneNumber?.valid)|| (!password?.valid)|| (!confirmPassword?.valid) ">Submit form</button>
+                    <!-- <button type="button" class="btn btn-danger btn-rounded">Reset all</button> -->
+                    <button type="submit" class="btn btn-black btn-rounded ms-2" [disabled]="(!employeeName?.valid) || (!email?.valid) || (!phoneNumber?.valid)|| (!password?.valid)|| (!confirmPassword?.valid) ">Submit form</button>
                   </div>
                 </div>
               </form>
@@ -165,3 +159,4 @@
       </div>
     </div>
   </div>
+</section>
