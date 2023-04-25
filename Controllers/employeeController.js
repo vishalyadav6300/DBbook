@@ -19,7 +19,7 @@ async function addEmployee(req,res){
 }
 
 async function allEmployees(req,res){
-    let employees=await employeeModel.find({});
+    let employees=await employeeModel.find({}).select('_id employeeName');
     res.send({message:'successfully sent',employees:employees})
 }
 

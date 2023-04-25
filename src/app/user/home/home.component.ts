@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { EmployeeService } from 'src/app/employee.service';
 import { room } from 'src/app/models/roommodel';
 interface roomtypemodel{
@@ -34,5 +35,6 @@ export class HomeComponent implements OnInit{
       }
     })
   }
-  constructor(private empservice:EmployeeService){}
+  constructor(private empservice:EmployeeService,private router:Router){}
+
 }

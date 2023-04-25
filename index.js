@@ -80,7 +80,6 @@ app.post('/login', async (req, res) => {
         }
     }
 })
-
 app.post('/', async (req, res) => {
     let adminObj = req.body;
     await adminModel.create(adminObj);

@@ -16,7 +16,7 @@
                 <h6><b>Access</b></h6>
                 <span class="badge badge-primary mx-2" *ngFor="let access of room.access">{{access}}</span>
                 <br>
-                <a href="#!" class="btn btn-black btn-rounded my-2">Book Now</a>
+                <a routerLink="../book/{{room._id}}" class="btn btn-black btn-rounded my-2">Book Now</a>
             </div>
         </div>
     </div>

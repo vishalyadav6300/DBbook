@@ -1,5 +1,6 @@
 const roomModel=require('./../Models/roomModel').roomModel;
 
+
 async function addRoom(req,res){
     let roomObj=req.body.roomObj;
     roomObj=JSON.parse(roomObj);
@@ -18,6 +19,7 @@ async function allrooms(req,res){
     let allrooms=await roomModel.find({})
     res.send({message:"success",rooms:allrooms})
 }
+
 async function deleteRoom(req,res){
     let roomObj=req.body.roomObj;
     
