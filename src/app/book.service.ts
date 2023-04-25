@@ -22,4 +22,8 @@ export class BookService {
     return this.hc.get('http://localhost:3009/employee/all-employee');
   }
 
+  getEvents():Observable<any>{
+    return this.hc.get('http://localhost:3009/event/all-events');
+  }
+
 }

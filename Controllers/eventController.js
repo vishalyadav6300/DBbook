@@ -7,12 +7,13 @@ async function AddEvents(req, res) {
 
     // Check for overlapping events
     eventModel.findOne({
+        room:newEvent.room,
         $or: [
             { start_time: { $gte: newEvent.start_time, $lt: newEvent.end_time } }, // start time falls between existing event's start and end time
             { end_time: { $gt: newEvent.start_time, $lte: newEvent.end_time } }, // end time falls between existing event's start and end time
             { $and: [{ start_time: { $lte: newEvent.start_time } }, { end_time: { $gte: newEvent.end_time } }] } // new event's start and end time fully overlaps with existing event's start and end time
-        ]
-    })
+        ]}
+    )
         .then(existingEvent => {
             if (existingEvent) {
                 // Overlapping event found
@@ -72,7 +73,7 @@ async function FilterEvent(req, res) {
 
 async function AllEvents(req, res) {
 
-    let events = await eventModel.find({});
+    let events = await eventModel.find({}).populate('room').populate('host');
 
     res.send({ message: 'sent', Events: events })
 }

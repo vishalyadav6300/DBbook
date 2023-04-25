@@ -12,6 +12,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AppHttpInterceptor } from './app-http.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     HttpClientModule,
     RouterModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AppHttpInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

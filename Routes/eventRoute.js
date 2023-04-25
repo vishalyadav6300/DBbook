@@ -1,17 +1,18 @@
 const express=require('express');
+const { verifyTokenUser } = require('../Middlewares/verifyToken');
 
 const eventRoute=express.Router();
 
 const eventController=require('./../Controllers/eventController')
 
-eventRoute.post('/add-event',eventController.AddEvents);
+eventRoute.post('/add-event',verifyTokenUser,eventController.AddEvents);
 
 eventRoute.get('/all-events',eventController.AllEvents);
 
-eventRoute.post('/cancel-event',eventController.CancelEvent);
+eventRoute.post('/cancel-event',verifyTokenUser,eventController.CancelEvent);
 
-eventRoute.post('/live-events',eventController.LiveEvents);
+eventRoute.post('/live-events',verifyTokenUser,eventController.LiveEvents);
 
-eventRoute.post('/filter-events',eventController.FilterEvent);
+eventRoute.post('/filter-events',verifyTokenUser,eventController.FilterEvent);
 
 module.exports={eventRoute};
