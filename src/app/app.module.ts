@@ -12,6 +12,8 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import {FullCalendarModule} from '@fullcalendar/angular'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

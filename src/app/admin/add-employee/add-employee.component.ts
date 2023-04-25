@@ -102,8 +102,4 @@ export class AddEmployeeComponent implements OnInit {
     })
     
   }
-  // onReset(){
-  //   this.employeeForm.reset();
-  // }
-
 }

@@ -10,6 +10,7 @@ import { SearchComponent } from './search/search.component';
 import { BookroomComponent } from './bookroom/bookroom.component';
 import { DisplayroomComponent } from './displayroom/displayroom.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import {FullCalendarModule} from '@fullcalendar/angular'
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     UserRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FullCalendarModule
   ]
 })
 export class UserModule { }
