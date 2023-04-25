@@ -1,73 +1,100 @@
-const eventModel=require('./../Models/EventsModel').eventModel
+const { employeeModel } = require('../Models/employeeModel');
 
-async function AddEvents(req,res){
-    let eventObj=req.body;
+const eventModel = require('./../Models/EventsModel').eventModel
 
-    let checkEvent=await eventModel.find({start_time:eventObj.start_time,end_time:eventObj.end_time,room:eventObj.room});
+async function AddEvents(req, res) {
+    let newEvent = req.body;
 
-    if(checkEvent!==null)
-    {
-        res.send({message:"Room already booked"});
+    // Check for overlapping events
+    eventModel.findOne({
+        $or: [
+            { start_time: { $gte: newEvent.start_time, $lt: newEvent.end_time } }, // start time falls between existing event's start and end time
+            { end_time: { $gt: newEvent.start_time, $lte: newEvent.end_time } }, // end time falls between existing event's start and end time
+            { $and: [{ start_time: { $lte: newEvent.start_time } }, { end_time: { $gte: newEvent.end_time } }] } // new event's start and end time fully overlaps with existing event's start and end time
+        ]
+    })
+        .then(existingEvent => {
+            if (existingEvent) {
+                // Overlapping event found
+                res.send({ message: 'Event overlaps with existing event' });
+                console.log('Event overlaps with existing event:', existingEvent);
+            } else {
+                // No overlapping event found, add the new event to the Event model
+                eventModel.create(newEvent)
+                    .then(async createdEvent => {
+                        await employeeModel.updateMany({ _id: { $in: createdEvent.invitees } },
+                            { $addToSet: { Events: createdEvent._id } }
+                          )
+                        res.send({ message: "New event added:" })
+                        console.log('New event added:', createdEvent);
+
+                    })
+                    .catch(error => {
+                        res.send({ message: 'Error adding new event:' })
+                        console.error('Error adding new event:', error);
+                    });
+            }
+        })
+        .catch(error => {
+            res.send({ message: 'Error checking for overlapping events' });
+            console.error('Error checking for overlapping events:', error);
+        });
+
+
+
+}
+
+async function CancelEvent(req, res) {
+    let eventObj = req.body;
+
+    let checkEvent = await eventModel.find({ start_time: eventObj.start_time, end_time: eventObj.end_time, room: eventObj.room });
+
+    if (checkEvent === null) {
+        res.send({ message: "Event Not found" });
         return;
     }
-    await eventModel.create(eventObj);
 
-    res.send({message:"Event Booked Successfully!!"});
+    await eventModel.find({ _id: eventObj._id }, { $set: { status: 'cancelled' } });
 
-}
-
-async function CancelEvent(req,res){
-    let eventObj=req.body;
-
-    let checkEvent=await eventModel.find({start_time:eventObj.start_time,end_time:eventObj.end_time,room:eventObj.room});
-
-    if(checkEvent===null)
-    {
-        res.send({message:"Event Not found"});
-        return;
-    }
-    
-    await eventModel.find({_id:eventObj._id},{$set:{status:'cancelled'}});
-
-    res.send({message:"Event cancelled Successfully!!"});
+    res.send({ message: "Event cancelled Successfully!!" });
 
 }
 
-async function FilterEvent(req,res){
-    let fliterObj=req.fliter;
+async function FilterEvent(req, res) {
+    let fliterObj = req.fliter;
 
-    let filteredEvents=await eventModel.find({_id:eventObj._id,filterObj});
+    let filteredEvents = await eventModel.find({ _id: eventObj._id, filterObj });
 
-    res.send({message:"sent",filters:filteredEvents});
+    res.send({ message: "sent", filters: filteredEvents });
 
 }
 
 
-async function AllEvents(req,res){
-    
-    let events=await eventModel.find({});
+async function AllEvents(req, res) {
 
-    res.send({message:'sent',Events:events})
+    let events = await eventModel.find({});
+
+    res.send({ message: 'sent', Events: events })
 }
 
-async function LiveEvents(req,res){
+async function LiveEvents(req, res) {
 
     const startOfDay = new Date();
     startOfDay.setHours(0, 0, 0, 0);
     const now = new Date();
-    
-    let events =await eventModel.find({
+
+    let events = await eventModel.find({
         start_time: { $gte: startOfDay },
         end_time: { $gte: now },
         status: 'booked'
     })
-    .populate('host')
-    .populate('room')
-    .exec();
+        .populate('host')
+        .populate('room')
+        .exec();
 
-    res.send({message:'sent',liveEvents:events})
-    
+    res.send({ message: 'sent', liveEvents: events })
+
 }
 
 
-module.exports={AllEvents,LiveEvents,AddEvents,CancelEvent,FilterEvent}
+module.exports = { AllEvents, LiveEvents, AddEvents, CancelEvent, FilterEvent }

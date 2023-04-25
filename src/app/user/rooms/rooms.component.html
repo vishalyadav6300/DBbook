@@ -1,46 +1,19 @@
 <div class="container mt-4">
-    <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <img src="https://dvyvvujm9h0uq.cloudfront.net/com/articles/1542633552-erico-marcelino-235177-unsplash.jpg" class="card-img-top" alt="Hollywood Sign on The Hill"/>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="https://dvyvvujm9h0uq.cloudfront.net/com/articles/1542633552-erico-marcelino-235177-unsplash.jpg" class="card-img-top" alt="Palm Springs Road"/>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a short card.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="https://dvyvvujm9h0uq.cloudfront.net/com/articles/1542633552-erico-marcelino-235177-unsplash.jpg" class="card-img-top" alt="Los Angeles Skyscrapers"/>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="https://dvyvvujm9h0uq.cloudfront.net/com/articles/1542633552-erico-marcelino-235177-unsplash.jpg" class="card-img-top" alt="Skyscrapers"/>
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">
-                This is a longer card with supporting text below as a natural lead-in to
-                additional content. This content is a little bit longer.
-              </p>
-            </div>
-          </div>
+  <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4">
+    <div class="col" *ngFor="let ele of rooms">
+      <div class="card h-100">
+        <img src={{ele.image}} class="card-img-top" alt="Hollywood Sign on The Hill" height="50%" />
+        <div class="card-body">
+          <h5 class="card-title">{{ele.roomName}}</h5>
+          <p class="card-text">
+            {{ele.roomType}}
+          </p>
+          <h6><b>Access</b></h6>
+          <span class="badge badge-primary mx-2" *ngFor="let access of ele.access">{{access}}</span>
+          <br>
+          <button class="btn btn-black btn-rounded my-2">Book now</button>
         </div>
       </div>
+    </div>
+  </div>
 </div>

@@ -11,6 +11,10 @@ export class EmployeeService {
   constructor(private hc:HttpClient) { }
 
   toLogin(loginObj:Object):Observable<any>{
-    return this.hc.post('http://localhost:3005/',loginObj);
+    return this.hc.post('http://localhost:3009/login',loginObj);
+  }
+
+  allrooms():Observable<any>{
+    return this.hc.get('http://localhost:3009/room/allrooms')
   }
 }

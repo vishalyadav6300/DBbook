@@ -3,6 +3,9 @@ const employeeModel=require('./employeeModel').employeeModel
 const roomModel=require('./../Models/roomModel').roomModel
 
 const eventSchema=mongoose.Schema({
+    event_name:{
+        type:String
+    },
     start_time:{
         type:Date
     },
@@ -21,7 +24,8 @@ const eventSchema=mongoose.Schema({
         type:String,
         enum:['booked','completed','cancelled','ongoing'],
         default:'booked'
-    }
+    },
+    invitees:[{type:mongoose.Schema.Types.ObjectId}]
 },{timestamps: true})
 
 const eventModel=mongoose.model('event',eventSchema)

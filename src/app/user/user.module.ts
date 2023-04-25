@@ -6,8 +6,10 @@ import { UserComponent } from './user.component';
 import { HomeComponent } from './home/home.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { LiveeventsComponent } from './liveevents/liveevents.component';
-import { YoureventsComponent } from './yourevents/yourevents.component';
 import { SearchComponent } from './search/search.component';
+import { BookroomComponent } from './bookroom/bookroom.component';
+import { DisplayroomComponent } from './displayroom/displayroom.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { SearchComponent } from './search/search.component';
     HomeComponent,
     RoomsComponent,
     LiveeventsComponent,
-    YoureventsComponent,
-    SearchComponent
+    SearchComponent,
+    BookroomComponent,
+    DisplayroomComponent
   ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }

@@ -15,8 +15,9 @@ const http = require("http").createServer(app)
 require("dotenv").config()
 
 //importing modules
-
+const employeeModel = require("./Models/employeeModel").employeeModel
 const adminModel = require('./Models/adminModel').adminModel
+
 
 //import express async-handler
 const errorHandler = require('express-async-handler')
@@ -48,11 +49,27 @@ app.use('/employee',employeeRoute);
 app.use('/room',roomRoute);
 app.use('/event',eventRoute);
 
+app.post('/login',async(req,res)=>{
+    let userobj=req.body
+    let user=await employeeModel.findOne({email:userobj.email})
+    if(user){
+        if(user.password==userobj.password){
+            res.send({message:"success",user:user});
+        }
+        else{
+            res.send({message:"invalid password"})
+        }
+    }
+    else{
+        res.send({message:"invalid credantials"})
+    }
+})
 app.post('/', async (req, res) => {
     let adminObj = req.body;
     await adminModel.create(adminObj);
     res.send({ message: "sent" })
 })
+
 
 //error handling for invalid path
 app.use((req, res, next) => {

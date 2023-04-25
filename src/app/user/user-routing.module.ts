@@ -1,17 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { BookroomComponent } from './bookroom/bookroom.component';
+import { DisplayroomComponent } from './displayroom/displayroom.component';
 import { HomeComponent } from './home/home.component';
 import { LiveeventsComponent } from './liveevents/liveevents.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { UserComponent } from './user.component';
-import { YoureventsComponent } from './yourevents/yourevents.component';
 
 const routes: Routes = [
   {
     path: '', component: UserComponent, children: [
-      { path: 'home', component: HomeComponent },
+      { path: 'home', component: HomeComponent},
+      {path:'book/:id',component:BookroomComponent},
       { path: 'rooms', component: RoomsComponent },
-      { path: 'yourevents', component: YoureventsComponent },
+      {path:'display-room' ,component:DisplayroomComponent},
       { path: 'liveevents', component: LiveeventsComponent }]
   },
 

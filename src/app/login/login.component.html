@@ -13,14 +13,14 @@
             <form [formGroup]="LoginObj" (ngSubmit)="onSubmit()">
               <!-- Email input -->
               <div class="">
-                <input type="email" id="form3Example3" class="form-control" placeholder="Email" formControlName="username"/>
+                <input type="email" id="form3Example3" class="form-control" placeholder="Email" formControlName="email"/>
               </div>
-              <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="mx-2 text-danger">
-                <p *ngIf="username?.errors?.['required']">
+              <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="mx-2 text-danger">
+                <p *ngIf="email?.errors?.['required']">
                     *email is required.
                 </p>
-                  <p *ngIf="username?.errors?.['minlength']">
-                    *username must be at least 6 characters long.
+                  <p *ngIf="email?.errors?.['email']">
+                    *invalid email
                   </p>
               </div>
 
@@ -35,7 +35,7 @@
               </div>
 
               <!-- Submit button -->
-              <button type="submit" class="mt-4 btn btn-black btn-rounded btn-block mb-4" [disabled]="(!username?.valid)||(!password?.valid)">
+              <button type="submit" class="mt-4 btn btn-black btn-rounded btn-block mb-4" [disabled]="(!email?.valid)||(!password?.valid)">
                 log in
               </button>
 
