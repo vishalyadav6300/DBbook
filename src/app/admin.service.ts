@@ -16,5 +16,9 @@ export class AdminService {
   addRoom(roomObj:Object):Observable<any>{
     return this.hc.post('http://localhost:3009/room/add-room',roomObj);
   }
+
+  editRoom(roomObj:Object):Observable<any>{
+    return this.hc.post('http://localhost:3009/room/edit-room',roomObj);
+  }
   
 }

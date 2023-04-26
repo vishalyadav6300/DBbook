@@ -6,11 +6,11 @@ import { UserComponent } from './user.component';
 import { HomeComponent } from './home/home.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { LiveeventsComponent } from './liveevents/liveevents.component';
-import { SearchComponent } from './search/search.component';
 import { BookroomComponent } from './bookroom/bookroom.component';
 import { DisplayroomComponent } from './displayroom/displayroom.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {FullCalendarModule} from '@fullcalendar/angular'
+import {FullCalendarModule} from '@fullcalendar/angular';
+import { UserprofileComponent } from './userprofile/userprofile.component'
 
 
 @NgModule({
@@ -19,9 +19,9 @@ import {FullCalendarModule} from '@fullcalendar/angular'
     HomeComponent,
     RoomsComponent,
     LiveeventsComponent,
-    SearchComponent,
     BookroomComponent,
-    DisplayroomComponent
+    DisplayroomComponent,
+    UserprofileComponent
   ],
   imports: [
     CommonModule,

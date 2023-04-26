@@ -20,19 +20,14 @@ async function allrooms(req,res){
     res.send({message:"success",rooms:allrooms})
 }
 
-async function deleteRoom(req,res){
-    let roomObj=req.body.roomObj;
-    
-   let obj=await roomModel.findOne({roomName:roomObj.roomName});
+async function updateRoom(req,res){
+    let roomObj=req.body;
+    console.log(roomObj);
 
-    if(obj===null){
-        res.send({mesage:'room doesnot  exist'});
-        return;
-    }
 
-    await roomModel.deleteOne({_id:roomObj._id});
+   await roomModel.findOneAndUpdate({_id:roomObj._id},roomObj.room);
 
-    res.send({message:'deleted successfully'})
+    res.send({message:'updated successfully'})
 }
 
 async function roomSpecificAccess(req,res){
@@ -54,4 +49,4 @@ async function  filterByType(req,res){
 
 }
 
-module.exports={addRoom,allrooms,deleteRoom,roomSpecificAccess,filterByType}
+module.exports={addRoom,allrooms,updateRoom,roomSpecificAccess,filterByType}
