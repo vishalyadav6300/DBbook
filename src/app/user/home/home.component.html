@@ -1,9 +1,9 @@
 <div class="container-fluid mt-4" *ngFor="let ele of roomTypes">
     <h5 class="text-dark mx-3"><b>{{ele.roomType}}</b></h5>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-        <div class="card mx-2" style="min-width: 250px; height: 20%; max-width: 300px;" *ngFor="let room of ele.rooms">
+        <div class="card mx-2" style="min-width: 250px; max-height: 70vh; max-width: 300px;" *ngFor="let room of ele.rooms">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                <img src="{{room.image}}" class="img-fluid" style="height: 40vh !important; width: 100%;"/>
+                <img src="{{room.image}}" class="img-fluid" style="min-height: 200px !important; width: 100%;"/>
                 <a href="#!">
                     <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
                 </a>
@@ -16,7 +16,10 @@
                 <h6><b>Access</b></h6>
                 <span class="badge badge-primary mx-2" *ngFor="let access of room.access">{{access}}</span>
                 <br>
-                <a routerLink="../book/{{room._id}}" class="btn btn-black btn-rounded my-2">Book Now</a>
+                <a routerLink="../book/{{room._id}}" class="btn btn-black btn-rounded my-2" *ngIf="room.access.indexOf(this.user.position)!=-1; else noaccess">Book Now</a>
+                <ng-template #noaccess>
+                    <a class="btn btn-danger btn-rounded my-2 disabled" >No Access</a>
+                </ng-template>
             </div>
         </div>
     </div>

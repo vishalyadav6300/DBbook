@@ -12,6 +12,11 @@
           <span class="badge badge-primary mx-2" *ngFor="let access of ele.access">{{access}}</span>
           <br>
           <button class="btn btn-black btn-rounded my-2">Book now</button>
+          <!-- <a routerLink="../book/{{room._id}}" class="btn btn-black btn-rounded my-2"
+            *ngIf="room.access.indexOf(this.user.position)!=-1; else noaccess">Book Now</a>
+          <ng-template #noaccess>
+            <a class="btn btn-danger btn-rounded my-2 disabled">No Access</a>
+          </ng-template> -->
         </div>
       </div>
     </div>

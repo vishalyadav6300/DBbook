@@ -16,7 +16,6 @@ const verifyTokenUser=(req,res,next)=>{
     }
     else{
      token =tokenWithBearer.split(" ")[1]
-   
         //verify the token
         jwt.verify(token,process.env.SECRETKEYUSER,(err,decoded)=>{
               if(err){
@@ -35,7 +34,7 @@ const verifyTokenUser=(req,res,next)=>{
 const verifyTokenAdmin=(req,res,next)=>{
      //get token from req obj
      let tokenWithBearer=req.headers.authorization;
-     
+
      let token;
 
      //if token is not present

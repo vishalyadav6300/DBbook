@@ -1,4 +1,5 @@
-const express=require('express')
+const express=require('express');
+const { verifyTokenAdmin, verifyTokenUser } = require('../Middlewares/verifyToken');
 
 const roomRoute=express.Router();
 
@@ -9,14 +10,14 @@ const roomController=require('./../Controllers/roomController')
 
 
 
-roomRoute.post('/add-room',upload.single('image'),roomController.addRoom);
+roomRoute.post('/add-room',verifyTokenAdmin,upload.single('image'),roomController.addRoom);
 
-roomRoute.get('/allrooms',roomController.allrooms)
+roomRoute.get('/allrooms',verifyTokenUser,roomController.allrooms)
 
-roomRoute.post('/delete-room',roomController.deleteRoom);
+roomRoute.post('/delete-room',verifyTokenAdmin,roomController.deleteRoom);
 
-roomRoute.post('/room-specific-access',roomController.roomSpecificAccess);
+roomRoute.post('/room-specific-access',verifyTokenUser,roomController.roomSpecificAccess);
 
-roomRoute.post('/filter',roomController.filterByType);
+roomRoute.post('/filter',verifyTokenUser,roomController.filterByType);
 
 module.exports={roomRoute};

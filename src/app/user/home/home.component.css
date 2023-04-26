@@ -60,3 +60,11 @@
         opacity: 0
     }
 }
+
+.card:hover {
+    transform: scale(1.025);
+}
+
+.card {
+    transition: transform 0.5s;
+}

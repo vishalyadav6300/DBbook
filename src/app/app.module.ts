@@ -14,6 +14,7 @@ import { AdminModule } from './admin/admin.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import {FullCalendarModule} from '@fullcalendar/angular'
 
+import { AppHttpInterceptor } from './app-http.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,7 @@ import {FullCalendarModule} from '@fullcalendar/angular'
     RouterModule,
     FullCalendarModule
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:AppHttpInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
