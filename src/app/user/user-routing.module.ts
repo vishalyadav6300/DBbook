@@ -10,11 +10,12 @@ import { UserComponent } from './user.component';
 const routes: Routes = [
   {
     path: '', component: UserComponent, children: [
-      { path: 'home', component: HomeComponent},
-      {path:'book/:id',component:BookroomComponent},
+      { path: 'home', component: HomeComponent },
+      { path: 'book/:id', component: BookroomComponent },
       { path: 'rooms', component: RoomsComponent },
-      {path:'display-room' ,component:DisplayroomComponent},
-      { path: 'liveevents', component: LiveeventsComponent }]
+      { path: 'display-room', component: DisplayroomComponent },
+      { path: 'liveevents', component: LiveeventsComponent },
+      { path: "", redirectTo: "home", pathMatch: "full" }]
   },
 
 ];

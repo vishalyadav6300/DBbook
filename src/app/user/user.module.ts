@@ -11,6 +11,8 @@ import { BookroomComponent } from './bookroom/bookroom.component';
 import { DisplayroomComponent } from './displayroom/displayroom.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FullCalendarModule} from '@fullcalendar/angular'
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { SearchPipe } from '../search.pipe';
 
 
 @NgModule({
@@ -21,13 +23,15 @@ import {FullCalendarModule} from '@fullcalendar/angular'
     LiveeventsComponent,
     SearchComponent,
     BookroomComponent,
-    DisplayroomComponent
+    DisplayroomComponent,
+    SearchPipe
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    NgMultiSelectDropDownModule
   ]
 })
 export class UserModule { }

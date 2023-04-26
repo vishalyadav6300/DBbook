@@ -15,6 +15,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import {FullCalendarModule} from '@fullcalendar/angular'
 
 import { AppHttpInterceptor } from './app-http.interceptor';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,8 @@ import { AppHttpInterceptor } from './app-http.interceptor';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-    FullCalendarModule
+    FullCalendarModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:AppHttpInterceptor,multi:true}],
   bootstrap: [AppComponent]

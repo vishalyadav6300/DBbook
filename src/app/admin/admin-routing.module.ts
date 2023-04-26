@@ -4,8 +4,15 @@ import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { AddRoomComponent } from './add-room/add-room.component';
 import { AdminComponent } from './admin.component';
 import { AllRoomsComponent } from './all-rooms/all-rooms.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
-const routes: Routes = [{ path: '', component: AdminComponent ,children:[{path:'employee',component:AddEmployeeComponent},{path:'room',component:AddRoomComponent},{path:'all-rooms',component:AllRoomsComponent}]}];
+const routes: Routes = [{ path: '', component: AdminComponent ,children:[
+  {path:'employee',component:AddEmployeeComponent},
+  {path:'room',component:AddRoomComponent},
+  {path:'all-rooms',component:AllRoomsComponent},
+  {path:'dashboard',component:DashboardComponent},
+  {path:"",redirectTo:"dashboard",pathMatch:"full"}
+]}];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

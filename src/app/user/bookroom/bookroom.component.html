@@ -1,45 +1,77 @@
-<div class="container">
-    <h2 class="text-center">Booking Form</h2>
-    <form [formGroup]="bookRoomForm" (ngSubmit)="onSubmit()" class="needs-validation w-50 mx-auto" >
-        <div class="form-group p-2">
-            <input type="text" class="form-control form-input" id="name" formControlName="host" placeholder="Host name" [attr.disabled] >
+<!-- Section: Design Block -->
+<section class="background-radial-gradient overflow-hidden">
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+        <div class="card bg-glass">
+          <div class="card-body">
+            <h2 class="text-dark text-center m-3"><b>BOOK ROOM</b></h2>
+            <form [formGroup]="bookRoomForm" (ngSubmit)="onSubmit()" class="needs-validation w-75 mx-auto">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group mt-2">
+                    <label for="">Host</label>
+                    <input type="text" class="form-control form-input" id="name" formControlName="host"
+                      placeholder="Host name" [attr.disabled]>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group mt-2">
+                    <label for="">Room</label>
+                    <input type="text" class="form-control form-input" id="name" formControlName="room"
+                      placeholder="Host name">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2">
+                <input type="text" class="form-control form-input" id="name" formControlName="event_name"
+                  placeholder="Event Name">
+                <div class="text-danger" *ngIf="event_name?.invalid && (event_name?.dirty || event_name?.touched)">
+                  <p *ngIf="event_name?.errors?.['required']">* Event name is required.</p>
+                  <p *ngIf="event_name?.errors?.['minlength']">*Event name must be at least 6 characters long.</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group mt-2">
+                    <label for="Start">Start Time</label>
+                    <input type="datetime-local" id="Start" class="form-control form-input" id="name"
+                      formControlName="start_time">
+                    <div class="text-danger" *ngIf="start_time?.invalid && (start_time?.dirty || start_time?.touched)">
+                      *start time is required.
+                    </div>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group mt-2">
+                    <label for="End">End Time</label>
+                    <input type="datetime-local" id="End" class="form-control form-input" id="name"
+                      formControlName="end_time">
+                    <div class="text-danger" *ngIf="end_time?.invalid && (end_time?.dirty || end_time?.touched)">
+                      *end time is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2">
+                <ng-multiselect-dropdown [settings]="dropdownSettingsforgenre" *ngIf="selection_data" [data]="invites"
+                  [placeholder]="'invites'" (onSelect)="onItemSelect($event)" (onSelectAll)="onItemallselect($event)"
+                  (onDeSelect)="onItemdeselect($event)" (onDeSelectAll)="onItemdeselectall($event)" style="color: black;">
+                </ng-multiselect-dropdown>
+              </div>
+              <div class="text-center mt-2">
+                <button type="submit" class="btn btn-black btn-rounded text-center px-5 mt-3"
+                  [disabled]="bookRoomForm.invalid">Submit</button>
+              </div>
+            </form>
           </div>
-          <div class="form-group p-2">
-            <input type="text" class="form-control form-input" id="name" formControlName="room" placeholder="Host name">
-          </div>
-        <div class="form-group p-2">
-        <input type="text" class="form-control form-input" id="name" formControlName="event_name" placeholder="Event Name">
-       <div class="text-danger" *ngIf="event_name?.invalid && (event_name?.dirty || event_name?.touched)">
-          <p *ngIf="event_name?.errors?.['required']">* Event name is required.</p>
-          <p *ngIf="event_name?.errors?.['minlength']">*Event name must be at least 6 characters long.</p>
         </div>
       </div>
-      <div class="form-group p-2">
-        <label for="Start">Start Time</label>
-        <input type="datetime-local" id="Start" class="form-control form-input" id="name" formControlName="start_time" >
-        <div class="text-danger" *ngIf="start_time?.invalid && (start_time?.dirty || start_time?.touched)">
-          *start time is required.
-        </div>
-      </div> 
-      <div class="form-group p-2">
-        <label for="End">End Time</label>
-        <input type="datetime-local" id="End" class="form-control form-input" id="name" formControlName="end_time" >
-        <div class="text-danger" *ngIf="end_time?.invalid && (end_time?.dirty || end_time?.touched)">
-          *end time is required.
-        </div>
-      </div> 
-      <label for="Invitees">Invitees:</label>
-    <div class="form-group" id="Invitees" formArrayName="invitees" *ngFor="let invitee of invitees?.controls;let i=index">  
-      <select class="form-control select"  [formControlName]="i" required>
-         <option *ngFor="let emp of empoylee_name" [value]="emp._id">{{emp.employeeName}}</option>
-      </select>
-      <div class="text-danger" *ngIf="invitees.controls[i]?.invalid && (invitees.controls[i]?.dirty || invitees.controls[i]?.touched)">
-        * invitees is required.
-      </div>
+      <div class="col-lg-1"></div>
     </div>
-      <div class="text-center p-2">
-        <button type="submit" class="btn btn-primary text-center px-5 mt-3" >Submit</button>
-      </div>
-       </form>
   </div>
-  
+</section>
+<!-- Section: Design Block -->

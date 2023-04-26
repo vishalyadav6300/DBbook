@@ -2,23 +2,25 @@ import { CalendarOptions } from '@fullcalendar/core'
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
+import multiMonthPlugin from '@fullcalendar/multimonth'
 import { Component, OnInit } from '@angular/core';
 import { BookService } from 'src/app/book.service';
 
 interface event {
+  _id:string,
   event_name: string,
   start_time: Date,
   end_time: Date,
   host: string,
   room: string,
   status: string,
-  nvitees: string
+  invitees: string
 }
 interface calendarEvent{
+  id:string,
   title:string,
   start:Date,
-  end:Date,
-  url:string
+  end:Date
 }
 
 
@@ -33,17 +35,16 @@ export class LiveeventsComponent implements OnInit {
   calendarevents:calendarEvent[]=[]
   calendarOptions: CalendarOptions= {
     eventClick:function(info){
-      console.log(info)
-      alert(info.event)
+      console.log(info.event)
     },
     initialView: 'dayGridMonth',
-    plugins: [dayGridPlugin,timeGridPlugin,listPlugin],
+    plugins: [dayGridPlugin,timeGridPlugin,listPlugin,multiMonthPlugin],
     themeSystem:"bootstrap5",
     nowIndicator: true,
     headerToolbar: {
       left: 'prev,next',
       center: 'title',
-      right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+      right: 'multiMonthYear,dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
     events:  [],
   };
@@ -55,8 +56,8 @@ export class LiveeventsComponent implements OnInit {
       this.events = res.Events;
       for(let event of this.events)
       {
-        this.calendarevents.push({title:event.event_name,start:event.start_time,
-          end:event.end_time,url:"/pagenotfound"})
+        this.calendarevents.push({id:event._id,title:event.event_name,start:event.start_time,
+          end:event.end_time})
         console.log(event.start_time)
       }
       console.log(this.calendarevents)

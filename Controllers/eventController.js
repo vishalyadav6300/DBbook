@@ -56,9 +56,7 @@ async function CancelEvent(req, res) {
     }
 
     await eventModel.find({ _id: eventObj._id }, { $set: { status: 'cancelled' } });
-
     res.send({ message: "Event cancelled Successfully!!" });
-
 }
 
 async function FilterEvent(req, res) {
