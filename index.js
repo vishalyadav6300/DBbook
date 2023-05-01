@@ -9,6 +9,7 @@ const bcryptjs = require('bcryptjs')
 const { v4: uuidv4 } = require("uuid")
 const app = express()
 const path = require("path")
+
 //import json web token
 const jwt = require("jsonwebtoken")
 
@@ -97,5 +98,5 @@ app.use((req, res, next) => {
 
 port = process.env.PORT || 3005
 var server = app.listen(port, () => {
-    console.log(`listening on port ${port}`)
+    console.log(`listening on port http://localhost:${port}`)
 })

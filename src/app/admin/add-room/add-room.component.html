@@ -42,12 +42,12 @@
                 *ngFor="let acc of access?.controls;let i=index">
                 <select class="form-control select mt-2" [formControlName]="i" required>
                   <option value="">Access</option>
-                  <option value="HOD">HOD</option>
-                  <option value="Team Lead">Team Lead</option>
-                  <option value="Intern">Intern</option>
-                  <option value="Product Lead">Product Lead</option>
-                  <option value="Project Manager">Project Manager</option>
-                  <option value="Engineer Manager">Engineer Manager</option>
+                  <option value="HOD" #op1 [disabled]="access.value.indexOf(op1.value)!=-1">HOD</option>
+                  <option value="Team Lead" #op2 [disabled]="access.value.indexOf(op2.value)!=-1">Team Lead</option>
+                  <option value="Intern" #op3 [disabled]="access.value.indexOf(op3.value)!=-1">Intern</option>
+                  <option value="Product Lead" #op4 [disabled]="access.value.indexOf(op4.value)!=-1">Product Lead</option>
+                  <option value="Project Manager" #op5 [disabled]="access.value.indexOf(op5.value)!=-1">Project Manager</option>
+                  <option value="Engineer Manager" #op6 [disabled]="access.value.indexOf(op6.value)!=-1">Engineer Manager</option>
                 </select>
                 <div class="text-danger"
                   *ngIf="access.controls[i]?.invalid && (access.controls[i]?.dirty || access.controls[i]?.touched)">

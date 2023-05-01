@@ -53,6 +53,7 @@ export class LiveeventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookService.getEvents().subscribe(res => {
+      console.log(res)
       this.events = res.Events;
       for(let event of this.events)
       {

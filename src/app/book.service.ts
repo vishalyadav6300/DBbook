@@ -1,6 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { eventmodel } from './models/eventmodel';
+import { room } from './models/roommodel';
+import { usermodel } from './models/usermodel';
+import { baseUrl,bookServiceUrls } from './route-config';
+interface filterresponse{
+  message:string,
+  rooms:room[]
+}
+interface eventsresponse{
+  message:string,
+  Events:eventmodel[]
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +21,20 @@ export class BookService {
 
   constructor(private hc:HttpClient) { }
 
-  getRoomById(id:any):Observable<any>{
-    return this.hc.post('http://localhost:3009/room/filter',id);
+  getRoomById(id:any):Observable<filterresponse>{
+    return this.hc.post<filterresponse>(`${baseUrl}${bookServiceUrls.roomFilter}`,id);
   }
 
-  addEvents(eventObj:any):Observable<any>{
-    console.log(eventObj);
-    return this.hc.post('http://localhost:3009/event/add-event',eventObj);
+  addEvents(eventObj:any):Observable<{message:string}>{
+    return this.hc.post<{message:string}>(`${baseUrl}${bookServiceUrls.addEvent}`,eventObj);
   }
 
-  getEmployeeDetails():Observable<any>{
-    return this.hc.get('http://localhost:3009/employee/all-employee');
+  getEmployeeDetails():Observable<{message:string,employees:usermodel[]}>{
+    return this.hc.get<{message:string,employees:usermodel[]}>(`${baseUrl}${bookServiceUrls.allEmployee}`);
   }
 
   getEvents():Observable<any>{
-    return this.hc.get('http://localhost:3009/event/all-events');
+    return this.hc.get(`${baseUrl}${bookServiceUrls.allEvents}`);
   }
 
 }

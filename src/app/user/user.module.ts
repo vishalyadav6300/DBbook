@@ -13,6 +13,7 @@ import {FullCalendarModule} from '@fullcalendar/angular'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SearchPipe } from '../search.pipe';
 import { UserprofileComponent } from './userprofile/userprofile.component'
+import { DateconversionPipe } from '../dateconversion.pipe';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { UserprofileComponent } from './userprofile/userprofile.component'
     BookroomComponent,
     DisplayroomComponent,
     SearchPipe,
-    UserprofileComponent
+    UserprofileComponent,
+    DateconversionPipe
   ],
   imports: [
     CommonModule,

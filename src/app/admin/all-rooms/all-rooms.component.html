@@ -2,35 +2,21 @@
   <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4">
     <div class="col" *ngFor="let ele of rooms; let i = index">
       <div class="card h-100">
-        <img
-          src="{{ ele.image }}"
-          class="card-img-top"
-          alt="Hollywood Sign on The Hill"
-          height="250px"
-        />
+        <img src="{{ ele.image }}" class="card-img-top" alt="Hollywood Sign on The Hill" height="250px" />
         <div class="card-body">
           <h5 class="card-title">{{ ele.roomName }}</h5>
           <p class="card-text">
             {{ ele.roomType }}
           </p>
           <h6><b>Access</b></h6>
-          <span
-            class="badge badge-primary mx-2"
-            *ngFor="let access of ele.access"
-            >{{ access }}</span
-          >
+          <span class="badge badge-primary mx-2" *ngFor="let access of ele.access">{{ access }}</span>
           <br />
         </div>
         <div class="card-footer">
-            <button
-              type="button"
-              class="btn btn-success btn-rounded my-2 text-center"
-              (click)="getData(i)"
-              data-mdb-toggle="modal"
-              data-mdb-target="#exampleModal"
-            >
-              <i class="fa-solid fa-pen-to-square"></i>Edit
-            </button>
+          <button type="button" class="btn btn-success btn-rounded my-2 text-center" (click)="getData(i)"
+            data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+            <i class="fa-solid fa-pen-to-square"></i>Edit
+          </button>
         </div>
       </div>
     </div>
@@ -40,44 +26,21 @@
 <!-- Button trigger modal -->
 
 <!-- Modal -->
-<div
-  class="modal fade"
-  id="exampleModal"
-  tabindex="-1"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Room</h5>
-        <button
-          type="button"
-          class="btn-close"
-          data-mdb-dismiss="modal"
-          aria-label="Close"
-        ></button>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form
-          [formGroup]="roomBookingForm"
-          (ngSubmit)="onSubmit()"
-          class="needs-validation mx-auto"
-        >
+        <form [formGroup]="roomBookingForm" (ngSubmit)="onSubmit()" class="needs-validation mx-auto">
           <div class="form-group">
             <label class="form-label" for="name">Room Name:</label>
-            <input
-              type="text"
-              class="form-control form-input"
-              id="name"
-              formControlName="roomName"
-            />
-            <div
-              class="text-danger"
-              *ngIf="
+            <input type="text" class="form-control form-input" id="name" formControlName="roomName" />
+            <div class="text-danger" *ngIf="
                 roomName?.invalid && (roomName?.dirty || roomName?.touched)
-              "
-            >
+              ">
               <p *ngIf="roomName?.errors?.['required']">
                 * room name is required.
               </p>
@@ -88,18 +51,10 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="name">Room Type:</label>
-            <input
-              type="text"
-              class="form-control form-input"
-              id="name"
-              formControlName="roomType"
-            />
-            <div
-              class="text-danger"
-              *ngIf="
+            <input type="text" class="form-control form-input" id="name" formControlName="roomType" />
+            <div class="text-danger" *ngIf="
                 roomType?.invalid && (roomType?.dirty || roomType?.touched)
-              "
-            >
+              ">
               <p *ngIf="roomType?.errors?.['required']">
                 * room name is required.
               </p>
@@ -109,26 +64,21 @@
             </div>
           </div>
           <label for="access">Access:</label>
-          <div
-            class="form-group"
-            id="access"
-            formArrayName="access"
-            *ngFor="let acc of access?.controls; let i = index"
-          >
+          <div class="form-group" id="access" formArrayName="access"
+            *ngFor="let acc of access?.controls; let i = index">
             <div class="row">
               <div class="col-9">
-                <select
-                  class="form-control select"
-                  [formControlName]="i"
-                  required
-                >
+                <select class="form-control select" [formControlName]="i" required>
                   <option value="">Access</option>
-                  <option value="HOD">HOD</option>
-                  <option value="Team Lead">Team Lead</option>
-                  <option value="Intern">Intern</option>
-                  <option value="Product Lead">Product Lead</option>
-                  <option value="Project Manager">Project Manager</option>
-                  <option value="Engineer Manager">Engineer Manager</option>
+                  <option value="HOD" #op1 [disabled]="access.value.indexOf(op1.value)!=-1">HOD</option>
+                  <option value="Team Lead" #op2 [disabled]="access.value.indexOf(op2.value)!=-1">Team Lead</option>
+                  <option value="Intern" #op3 [disabled]="access.value.indexOf(op3.value)!=-1">Intern</option>
+                  <option value="Product Lead" #op4 [disabled]="access.value.indexOf(op4.value)!=-1">Product Lead
+                  </option>
+                  <option value="Project Manager" #op5 [disabled]="access.value.indexOf(op5.value)!=-1">Project Manager
+                  </option>
+                  <option value="Engineer Manager" #op6 [disabled]="access.value.indexOf(op6.value)!=-1">Engineer
+                    Manager</option>
                 </select>
               </div>
               <div class="col-3">
@@ -137,39 +87,22 @@
                 </button>
               </div>
             </div>
-            <div
-              class="text-danger"
-              *ngIf="
+            <div class="text-danger" *ngIf="
                 access.controls[i]?.invalid &&
                 (access.controls[i]?.dirty || access.controls[i]?.touched)
-              "
-            >
+              ">
               * Access is required.
             </div>
           </div>
-          <button
-            class="mt-2 btn btn-primary text-end"
-            type="button"
-            (click)="addAccess()"
-            [disabled]="access.invalid"
-          >
+          <button class="mt-2 btn btn-primary text-end" type="button" (click)="addAccess()" [disabled]="access.invalid">
             Add
           </button>
           <div class="form-group">
             <label for="capacity">Capacity:</label>
-            <input
-              type="number"
-              class="form-control"
-              id="capacity"
-              formControlName="capacity"
-              required
-            />
-            <div
-              class="text-danger"
-              *ngIf="
+            <input type="number" class="form-control" id="capacity" formControlName="capacity" required />
+            <div class="text-danger" *ngIf="
                 capacity?.invalid && (capacity?.dirty || capacity?.touched)
-              "
-            >
+              ">
               <div *ngIf="capacity?.errors?.['required']">
                 Capacity is required.
               </div>
@@ -179,11 +112,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-danger"
-              data-mdb-dismiss="modal"
-            >
+            <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">
               Close
             </button>
             <button type="submit" class="btn btn-success">Save changes</button>

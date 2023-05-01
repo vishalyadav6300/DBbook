@@ -2,50 +2,79 @@ const roomModel=require('./../Models/roomModel').roomModel;
 
 
 async function addRoom(req,res){
-    let roomObj=req.body.roomObj;
-    roomObj=JSON.parse(roomObj);
-    roomObj['image']=req.file.path;
-    console.log(roomObj);
-   let obj=await roomModel.findOne({roomName:roomObj.roomName});
-    if(obj!==null){
-        res.send({mesage:'room name already exist'});
-        return;
+    try{
+        let roomObj=req.body.roomObj;
+        roomObj=JSON.parse(roomObj);
+        roomObj['image']=req.file.path;
+        console.log(roomObj);
+       let obj=await roomModel.findOne({roomName:roomObj.roomName});
+        if(obj!==null){
+            res.send({mesage:'room name already exist'});
+            return;
+        }
+        await roomModel.create(roomObj);
+        res.send({message:'created successfully'})
     }
-    await roomModel.create(roomObj);
-    res.send({message:'created successfully'})
+    catch(err){
+        console.log(err);
+        res.send({message:err});
+    }
 }
 
 async function allrooms(req,res){
-    let allrooms=await roomModel.find({})
+    try{
+        let allrooms=await roomModel.find({})
     res.send({message:"success",rooms:allrooms})
+    }
+    catch(err){
+        console.log(err);
+        res.send({message:err});
+    }
 }
 
 async function updateRoom(req,res){
-    let roomObj=req.body;
+    try{
+        let roomObj=req.body;
     console.log(roomObj);
 
 
    await roomModel.findOneAndUpdate({_id:roomObj._id},roomObj.room);
 
     res.send({message:'updated successfully'})
+    }
+    catch(err){
+        console.log(err);
+        res.send({message:err});
+    }
 }
 
 async function roomSpecificAccess(req,res){
-    let obj=req.body;
+    try{
+        let obj=req.body;
 
     let rooms=await roomModel.find({access:{$in:[obj.role]}});
 
     res.send({message:'sent',rooms:rooms});
+    }
+    catch(err){
+        console.log(err);
+        res.send({message:err});
+    }
 
 }
 
 async function  filterByType(req,res){
+    try{
+        let filterObj=req.body;
 
-    let filterObj=req.body;
+        let rooms=await roomModel.find(filterObj);
 
-    let rooms=await roomModel.find(filterObj);
-
-    res.send({message:'sent',rooms:rooms});
+         res.send({message:'sent',rooms:rooms});
+    }
+    catch(err){
+        console.log(err);
+        res.send({message:err});
+    }
 
 }
 

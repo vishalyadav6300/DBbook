@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { loginModel } from 'src/models/loginModel';
 import { adminmodel } from './models/adminmodel';
 import { room } from './models/roommodel';
 import { usermodel } from './models/usermodel';
+import {baseUrl,employeeServiceUrls} from './route-config'
+
 
 interface responseroom{
   message:string,
@@ -37,10 +38,10 @@ export class EmployeeService {
   }
 
   toLogin(loginObj:Object):Observable<responselogin>{
-    return this.hc.post<responselogin>('http://localhost:3009/login',loginObj);
+    return this.hc.post<responselogin>(`${baseUrl}${employeeServiceUrls.login}`,loginObj);
   }
 
   allrooms():Observable<responseroom>{
-    return this.hc.get<responseroom>('http://localhost:3009/room/allrooms')
+    return this.hc.get<responseroom>(`${baseUrl}${employeeServiceUrls.allRooms}`)
   }
 }

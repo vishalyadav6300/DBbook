@@ -82,11 +82,10 @@
                         <div class="card mb-5 text-white" style="border-radius: 15px;background-color: rgb(26, 40, 61);">
                           <div class="card-body p-4">
                             <h3 class="mb-3">{{event.event_name}}</h3>
-                            <p class="small mb-0"><i class="far fa-star fa-lg"></i> <span class="mx-2">|</span> Created by
-                              <strong>MDBootstrap</strong> {{event.createdAt}}</p>
+                            <p class="small mb-0"><i class="far fa-star fa-lg"></i> <span class="mx-2">|</span>{{event.createdAt | dateconversion}}</p>
                               <hr class="my-4">
-                              <p>Start  Time :{{event.start_time}}</p>
-                              <p>End  Time   :{{event.end_time}}</p>
+                              <p>Start  Time :{{event.start_time | dateconversion}}</p>
+                              <p>End  Time   :{{event.end_time | dateconversion}}</p>
                             <div class="d-flex justify-content-start align-items-center">
                               <hr class="my-4">
                               <p class="mb-0 text-uppercase"><span
