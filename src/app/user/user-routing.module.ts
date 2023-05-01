@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { LiveeventsComponent } from './liveevents/liveevents.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { UserComponent } from './user.component';
+import { UserprofileComponent } from './userprofile/userprofile.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
       { path: 'rooms', component: RoomsComponent },
       { path: 'display-room', component: DisplayroomComponent },
       { path: 'liveevents', component: LiveeventsComponent },
-      { path: "", redirectTo: "home", pathMatch: "full" }]
+      { path: "", redirectTo: "home", pathMatch: "full" },
+      { path:'user-profile',component:UserprofileComponent }]
   },
 
 ];

@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin.service';
 
 @Component({
@@ -11,59 +12,64 @@ export class AddRoomComponent implements OnInit {
 
 
   roomBookingForm!: FormGroup;
-  file!:File
+  file!: File
 
-  constructor(private formBuilder: FormBuilder,private adminService:AdminService){}
+  constructor(private formBuilder: FormBuilder, private adminService: AdminService,
+    private route: Router) { }
   ngOnInit(): void {
     this.roomBookingForm = this.formBuilder.group({
       roomName: ['', [Validators.required, Validators.minLength(6)]],
       roomType: ['', [Validators.required, Validators.minLength(3)]],
-      access: this.formBuilder.array([this.formBuilder.control('')],[Validators.maxLength(5)]),
-      capacity: [null, [Validators.required, Validators.min(1)]] ,
-      image:['',Validators.required]
-    });  
+      access: this.formBuilder.array([this.formBuilder.control('')], [Validators.maxLength(5)]),
+      capacity: [null, [Validators.required, Validators.min(1)]],
+      image: ['', Validators.required]
+    });
   }
 
-  get roomName(){
+  get roomName() {
     return this.roomBookingForm.get('roomName');
   }
-  get roomType(){
+  get roomType() {
     return this.roomBookingForm.get('roomType');
   }
-  get access(){
+  get access() {
     return this.roomBookingForm.get('access') as FormArray;
   }
-  get capacity(){
+  get capacity() {
     return this.roomBookingForm.get('capacity');
   }
-  get image(){
+  get image() {
     return this.roomBookingForm.get('image');
   }
   // get images(){
   //   return this.imageUploadForm.get('images') as FormArray;
   // }
 
-  selectFile(event:any){
-    this.file= event.target.files[0]  
+  selectFile(event: any) {
+    this.file = event.target.files[0]
   }
   // addImage():void{
   //   this.images.push(this.formBuilder.control(''))
   // }
-  addAccess():void{
+  addAccess(): void {
     this.access.push(this.formBuilder.control(''));
   }
-  
+
 
   onSubmit() {
-    let formData=new FormData();
-    formData.append("image",this.file,this.file.name)
-    formData.append('roomObj',JSON.stringify(this.roomBookingForm.value))
+    let formData = new FormData();
+    formData.append("image", this.file, this.file.name)
+    formData.append('roomObj', JSON.stringify(this.roomBookingForm.value))
     console.log(formData);
-    this.adminService.addRoom(formData).subscribe(res=>{
+    this.adminService.addRoom(formData).subscribe(res => {
       console.log(res);
+      if (res.message == 'created successfully') {
+        alert("added successfully")
+        this.route.navigateByUrl("admin")
+      }
+      else{
+        alert(res.message)
+      }
     })
-    
-
   }
-
 }

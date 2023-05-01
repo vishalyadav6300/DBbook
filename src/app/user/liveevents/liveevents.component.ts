@@ -37,7 +37,7 @@ export class LiveeventsComponent implements OnInit {
     eventClick:function(info){
       console.log(info.event)
     },
-    initialView: 'dayGridMonth',
+    initialView: 'multiMonthYear',
     plugins: [dayGridPlugin,timeGridPlugin,listPlugin,multiMonthPlugin],
     themeSystem:"bootstrap5",
     nowIndicator: true,

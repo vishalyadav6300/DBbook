@@ -12,9 +12,9 @@ const roomController=require('./../Controllers/roomController')
 
 roomRoute.post('/add-room',verifyTokenAdmin,upload.single('image'),roomController.addRoom);
 
-roomRoute.get('/allrooms',verifyTokenUser,roomController.allrooms)
+roomRoute.get('/allrooms',roomController.allrooms)
 
-roomRoute.post('/delete-room',verifyTokenAdmin,roomController.deleteRoom);
+roomRoute.post('/edit-room',verifyTokenAdmin,roomController.updateRoom);
 
 roomRoute.post('/room-specific-access',verifyTokenUser,roomController.roomSpecificAccess);
 

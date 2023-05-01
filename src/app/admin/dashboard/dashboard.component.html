@@ -1,214 +1,90 @@
-<section>
-    <div class="container my-5">
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div class="align-self-center">
-                                <i class="fas fa-pencil-alt text-info fa-3x"></i>
-                            </div>
-                            <div class="text-end">
-                                <h3>278</h3>
-                                <p class="mb-0">New Posts</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div class="align-self-center">
-                                <i class="far fa-comment-alt text-warning fa-3x"></i>
-                            </div>
-                            <div class="text-end">
-                                <h3>156</h3>
-                                <p class="mb-0">New Comments</p>
+<section style="background-image: linear-gradient(to bottom right, rgb(0, 0, 0), rgb(255, 255, 255));" class="p-3">
+    <section>
+        <div class="container my-5">
+            <div class="row">
+                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div class="align-self-center">
+                                    <i class="fas fa-calendar-check text-dark fa-3x"></i>
+                                </div>
+                                <div class="text-end">
+                                    <h3 class="text-dark">{{events}}</h3>
+                                    <p class="mb-0">All Events</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div class="align-self-center">
-                                <i class="fas fa-chart-line text-success fa-3x"></i>
-                            </div>
-                            <div class="text-end">
-                                <h3>64.89 %</h3>
-                                <p class="mb-0">Bounce Rate</p>
+                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-dark">{{rooms}}</h3>
+                                    <p class="mb-0">All Rooms</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="fas fa-house text-dark fa-3x"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div class="align-self-center">
-                                <i class="fas fa-map-marker-alt text-danger fa-3x"></i>
-                            </div>
-                            <div class="text-end">
-                                <h3>423</h3>
-                                <p class="mb-0">Total Visits</p>
+                <div class="col-xl-4 col-sm-6 col-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between px-md-1">
+                                <div>
+                                    <h3 class="text-dark">{{emps}}</h3>
+                                    <p class="mb-0">All Employees</p>
+                                </div>
+                                <div class="align-self-center">
+                                    <i class="far fa-user text-dark fa-3x"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-danger">278</h3>
-                                <p class="mb-0">New Projects</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas fa-rocket text-danger fa-3x"></i>
-                            </div>
-                        </div>
-                    </div>
+    </section>
+    <section class="mb-4">
+        <div class="container">
+            <div class="card">
+                <div class="card-header text-center py-3">
+                    <h5 class="mb-0 text-center">
+                        <strong>Today Events</strong>
+                    </h5>
                 </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-success">156</h3>
-                                <p class="mb-0">New Clients</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="far fa-user text-success fa-3x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-warning">64.89 %</h3>
-                                <p class="mb-0">Conversion Rate</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas fa-chart-pie text-warning fa-3x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-info">423</h3>
-                                <p class="mb-0">Support Tickets</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="far fa-life-ring text-info fa-3x"></i>
-                            </div>
-                        </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Host Name</th>
+                                    <th scope="col">Room Type</th>
+                                    <th scope="col">Event Name</th>
+                                    <th scope="col">Room Name</th>
+                                    <th scope="col">Start Time</th>
+                                    <th scope="col">End Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let ele of todayevents">
+                                    <td>{{ele.host.employeeName}}</td>
+                                    <td>{{ele.room.roomType}}</td>
+                                    <td>{{ele.event_name}}</td>
+                                    <td>{{ele.room.roomName}}</td>
+                                    <td>{{ele.start_time}}</td>
+                                    <td>{{ele.end_time}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-info">278</h3>
-                                <p class="mb-0">New Posts</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas fa-book-open text-info fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                    aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-warning">156</h3>
-                                <p class="mb-0">New Comments</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="far fa-comments text-warning fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 35%"
-                                    aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-success">64.89 %</h3>
-                                <p class="mb-0">Bounce Rate</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas fa-mug-hot text-success fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 60%"
-                                    aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-sm-6 col-12 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between px-md-1">
-                            <div>
-                                <h3 class="text-danger">423</h3>
-                                <p class="mb-0">Total Visits</p>
-                            </div>
-                            <div class="align-self-center">
-                                <i class="fas fa-map-signs text-danger fa-3x"></i>
-                            </div>
-                        </div>
-                        <div class="px-md-1">
-                            <div class="progress mt-3 mb-1 rounded" style="height: 7px">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 40%"
-                                    aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    </section>
 </section>

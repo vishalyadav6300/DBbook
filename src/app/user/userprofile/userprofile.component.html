@@ -1,0 +1,112 @@
+<section >
+    <div class="container py-5">  
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="card mb-4">
+            <div class="card-body text-center">
+              <img [src]="employeeData.profilePic" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              <h5 class="my-3">{{employeeData.employeeName}}</h5>
+              <p class="text-muted mb-1">{{employeeData.position}}</p>
+              <p class="text-muted mb-4">{{employeeData.department}}, {{employeeData.module}}</p>
+              <div class="d-flex justify-content-center mb-2">
+                <button type="button" class="btn btn-dark" (click)="onClickDetails()">Details</button>
+                <button type="button" class="btn btn-outline-black ms-1" (click)="onClickEvent()">Events</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-9">
+          <div class="card">
+            <div class="card-body" *ngIf="displayDetails">
+              <div class="row" >
+                <h1 class="display-5 text-center mb-5">Employee Details</h1>
+                <div class="col-sm-3">
+                  <p class="mb-0">Full Name</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{employeeData.employeeName}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{employeeData.email}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Phone</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{employeeData.phoneNumber}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Gender</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{employeeData.gender}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Position</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{employeeData.position}}</p>
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Department</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{employeeData.department}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="card-body" *ngIf="!displayDetails">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <h4 class="text-center display-5 ">Your Event's</h4>
+                      <div class="col col-xl-11" *ngFor="let event of employeeData.Events">
+                        <div class="card mb-5 text-white" style="border-radius: 15px;background-color: rgb(26, 40, 61);">
+                          <div class="card-body p-4">
+                            <h3 class="mb-3">{{event.event_name}}</h3>
+                            <p class="small mb-0"><i class="far fa-star fa-lg"></i> <span class="mx-2">|</span> Created by
+                              <strong>MDBootstrap</strong> {{event.createdAt}}</p>
+                              <hr class="my-4">
+                              <p>Start  Time :{{event.start_time}}</p>
+                              <p>End  Time   :{{event.end_time}}</p>
+                            <div class="d-flex justify-content-start align-items-center">
+                              <hr class="my-4">
+                              <p class="mb-0 text-uppercase"><span
+                                  class="text-muted small">count:{{event.invitees.length}}</span></p>
+                              <a href="#!">
+                                <img [src]="employeeData.profilePic" alt="avatar"
+                                  class="ms-3 img-fluid rounded-circle me-3" width="35">
+                              </a>
+                              <button type="button" class="btn btn-outline-dark btn-sm btn-floating">
+                                <i class="fas fa-plus"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

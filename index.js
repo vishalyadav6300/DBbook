@@ -25,6 +25,8 @@ const adminModel = require('./Models/adminModel').adminModel
 const errorHandler = require('express-async-handler')
 
 const cors = require("cors")
+const { eventModel } = require("./Models/EventsModel")
+const { roomModel } = require("./Models/roomModel")
 app.use(cors())
 app.use(session({
     secret: uuidv4(),
@@ -45,14 +47,15 @@ app.use(express.json())
 const employeeRoute = require('./Routes/employeeRoute').employeeRoute
 const roomRoute = require('./Routes/roomRoute').roomRoute
 const eventRoute = require('./Routes/eventRoute').eventRoute
+const adminroute=require('./Routes/adminRoute').adminroute
 
-
+app.use('/admin',adminroute)
 app.use('/employee', employeeRoute);
 app.use('/room', roomRoute);
 app.use('/event', eventRoute);
 app.post('/login', async (req, res) => {
     let userobj = req.body
-    let user = await employeeModel.findOne({ email: userobj.email })
+    let user = await employeeModel.findOne({ email: userobj.email }).populate('Events',null,eventModel).populate('Events.host')
     let admin = await adminModel.findOne({ email: userobj.email })
     if (admin) {
         if (admin.password == userobj.password) {

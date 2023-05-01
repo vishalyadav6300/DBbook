@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { BookService } from 'src/app/book.service';
 
@@ -19,7 +19,7 @@ interface invitesmodel {
 })
 export class BookroomComponent implements OnInit {
 
-  selection_data:boolean=false
+  selection_data: boolean = false
   roomId!: string;
   empObj: any;
   bookRoomForm!: FormGroup
@@ -30,7 +30,8 @@ export class BookroomComponent implements OnInit {
   dropdownSettingsforgenre: IDropdownSettings = {};
 
 
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private bookSerice: BookService) { }
+  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private bookSerice: BookService,
+    private router:Router) { }
 
   ngOnInit() {
     this.roomId = this.route.snapshot.paramMap.get('id') || '';
@@ -47,13 +48,13 @@ export class BookroomComponent implements OnInit {
 
     this.bookSerice.getEmployeeDetails().subscribe(res => {
       this.empoylee_name = res.employees;
-      for(let ele of this.empoylee_name){
+      for (let ele of this.empoylee_name) {
         this.invites.push({
-          item_id:ele._id,
-          item_text:ele.employeeName
+          item_id: ele._id,
+          item_text: ele.employeeName
         })
       }
-      this.selection_data=true
+      this.selection_data = true
     })
 
     //Form Group
@@ -108,9 +109,13 @@ export class BookroomComponent implements OnInit {
     })
     this.bookRoomForm.get('host')?.enable();
     this.bookRoomForm.get('room')?.enable();
-    this.bookRoomForm.value.invitees=this.invites_data
+    this.bookRoomForm.value.invitees = this.invites_data
     this.bookSerice.addEvents(this.bookRoomForm.value).subscribe(res => {
-      console.log(res);
+      if (res.message == 'New event added:') {
+        alert("added successfully")
+        this.router.navigateByUrl("user")
+      }
+      alert(res.message);
     })
   }
 

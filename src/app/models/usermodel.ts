@@ -12,5 +12,5 @@ export interface usermodel{
     phoneNumber:string,
     limit:number,
     date:Date,
-    Events:String[]
+    Events:any[]
 }

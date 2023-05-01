@@ -6,13 +6,13 @@ import { UserComponent } from './user.component';
 import { HomeComponent } from './home/home.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { LiveeventsComponent } from './liveevents/liveevents.component';
-import { SearchComponent } from './search/search.component';
 import { BookroomComponent } from './bookroom/bookroom.component';
 import { DisplayroomComponent } from './displayroom/displayroom.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FullCalendarModule} from '@fullcalendar/angular'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SearchPipe } from '../search.pipe';
+import { UserprofileComponent } from './userprofile/userprofile.component'
 
 
 @NgModule({
@@ -21,10 +21,10 @@ import { SearchPipe } from '../search.pipe';
     HomeComponent,
     RoomsComponent,
     LiveeventsComponent,
-    SearchComponent,
     BookroomComponent,
     DisplayroomComponent,
-    SearchPipe
+    SearchPipe,
+    UserprofileComponent
   ],
   imports: [
     CommonModule,
