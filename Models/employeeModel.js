@@ -1,34 +1,45 @@
 const mongoose=require('mongoose');
 const employeeSchema=mongoose.Schema({
     profilePic:{
-        type:String
+        type:String,
+        required:true
     },
     employeeName:{
-        type:String
+        type:String,
+        required:true
     },
     username:{
-        type:String
+        type:String,
+        required:true
     },
     gender:{
-        type:String
+        type:String,
+        required:true,
+        enum:['male','female','others']
     },
     password:{
-        type:String
+        type:String,
+        required:true
     },
     department:{
-        type:String
+        type:String,
+        required:true
     },
     module:{
-        type:String
+        type:String,
+        required:true
     },
     position:{
-        type:String
+        type:String,
+        required:true
     },
     email:{
-        type:String
+        type:String,
+        required:true
     },
     phoneNumber:{
-        type:String
+        type:String,
+        required:true
     },
     limit:{
         type:Number,

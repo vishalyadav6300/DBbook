@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit{
   rooms!:number
   events!:number
   todayevents:any=[]
+  p:number=1
 
   ngOnInit(): void {
     this.adminservice.dashboard().subscribe((res)=>{

@@ -20,4 +20,7 @@ roomRoute.post('/room-specific-access',verifyTokenUser,roomController.roomSpecif
 
 roomRoute.post('/filter',verifyTokenUser,roomController.filterByType);
 
+roomRoute.post('/room-events/:roomName',roomController.roomEvents);
+
+
 module.exports={roomRoute};

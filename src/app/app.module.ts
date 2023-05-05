@@ -21,6 +21,7 @@ import { CacheinterceptorInterceptor } from './cacheinterceptor.interceptor';
 import { RequsettimeoutCompoent } from './requsettimeout/requsettimeout.component';
 import { TimeoutInterceptor } from './timeout.interceptor';
 import { ResponsehandlingInterceptor } from './responsehandling.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent,

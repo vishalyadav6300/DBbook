@@ -1,4 +1,5 @@
 const roomModel=require('./../Models/roomModel').roomModel;
+const eventModel=require('./../Models/EventsModel').eventModel;
 
 
 async function addRoom(req,res){
@@ -78,4 +79,21 @@ async function  filterByType(req,res){
 
 }
 
-module.exports={addRoom,allrooms,updateRoom,roomSpecificAccess,filterByType}
+async function  roomEvents(req,res){
+    try{
+        let filterObj=req.params;
+
+        let rooms=await roomModel.findOne(filterObj);
+
+        let events=await eventModel.find({room:rooms._id}).populate('host').populate("room");
+
+        res.send({message:'sent',events:events});
+    }
+    catch(err){
+        console.log(err);
+        res.send({message:err});
+    }
+
+}
+
+module.exports={addRoom,allrooms,updateRoom,roomSpecificAccess,filterByType,roomEvents}

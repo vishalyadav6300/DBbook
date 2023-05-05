@@ -5,7 +5,6 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import {mergeMap, delay, retryWhen} from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 
 export const maxRetries = 2;

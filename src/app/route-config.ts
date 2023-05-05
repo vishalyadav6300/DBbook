@@ -9,7 +9,8 @@ export const bookServiceUrls={
     roomFilter:'/room/filter',
     addEvent:'/event/add-event',
     allEmployee:'/employee/all-employee',
-    allEvents:'/event/all-events'
+    allEvents:'/event/all-events',
+    roomEvents:'/room/room-events'
 
 }
 

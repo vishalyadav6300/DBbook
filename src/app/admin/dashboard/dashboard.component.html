@@ -72,16 +72,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let ele of todayevents">
-                                    <td>{{ele.host.employeeName}}</td>
+                                <tr *ngFor="let ele of todayevents | paginate:{itemsPerPage:3,currentPage:p}">
+                                    <td>{{ele.host.employeeName | uppercase}}</td>
                                     <td>{{ele.room.roomType}}</td>
                                     <td>{{ele.event_name}}</td>
                                     <td>{{ele.room.roomName}}</td>
-                                    <td>{{ele.start_time}}</td>
-                                    <td>{{ele.end_time}}</td>
+                                    <td>{{ele.start_time |date}}</td>
+                                    <td>{{ele.end_time | date}}</td>
                                 </tr>
                             </tbody>
                         </table>
+                        <pagination-controls class="text-center" style="margin: 3%;"
+                            (pageChange)="p=$event"></pagination-controls>
                     </div>
                 </div>
             </div>

@@ -36,7 +36,6 @@ export class BookroomComponent implements OnInit {
   ngOnInit() {
     this.roomId = this.route.snapshot.paramMap.get('id') || '';
 
-    console.log(this.roomId);
 
     this.bookSerice.getRoomById({ _id: this.roomId }).subscribe(res => {
       this.roomname = res.rooms[0].roomName;
