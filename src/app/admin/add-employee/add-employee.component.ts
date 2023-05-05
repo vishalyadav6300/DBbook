@@ -13,93 +13,93 @@ import { AdminService } from 'src/app/admin.service';
 export class AddEmployeeComponent implements OnInit {
 
   employeeForm!: FormGroup;
-  submitted=false
+  submitted = false
 
-  constructor(private fb:FormBuilder,private adminService:AdminService,
-    private route:Router){
+  constructor(private fb: FormBuilder, private adminService: AdminService,
+    private route: Router) {
   }
 
   ngOnInit(): void {
-    this.employeeForm= this.fb.group({
-      employeeName: ['', [Validators.required,Validators.minLength(6)]],
+    this.employeeForm = this.fb.group({
+      employeeName: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
-      phoneNumber:['',[Validators.required,Validators.pattern(/^\d{10}$/)]],
-      gender:['',Validators.required],
-      department:['Department',Validators.required],
-      module:['Module',Validators.required],
-      position:['Position',Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6),Validators.pattern("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+,\-.?])(?=.{8,})[a-zA-Z0-9!@#$%^&*()_+,\-.?]+$")]],
+      phoneNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      gender: ['', Validators.required],
+      department: ['Department', Validators.required],
+      module: ['Module', Validators.required],
+      position: ['Position', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+,\-.?])(?=.{8,})[a-zA-Z0-9!@#$%^&*()_+,\-.?]+$")]],
       confirmPassword: ['', Validators.required]
-  },{
-    validators:this.MustMatch('password','confirmPassword')
+    }, {
+      validators: this.MustMatch('password', 'confirmPassword', 'email')
+    }
+    );
   }
-  );
-  }
-  file!:File;
-  selectFile(event:any){
-     this.file= event.target.files[0]
+  file!: File;
+  selectFile(event: any) {
+    this.file = event.target.files[0]
   }
 
-  MustMatch(password:string,confirmPassword:string){
-    return(fb:FormGroup)=>{
+  //custom validator for password check
+  MustMatch(password: string, confirmPassword: string, email: string) {
+    return (fb: FormGroup) => {
+      const password = fb.get('password');
+      const confirmPassword = fb.get('confirmPassword');
+      const email = fb.get('email')
+      if (confirmPassword?.errors && !confirmPassword?.errors?.['mismatch'])
+        return;
 
-      const password=fb.get('password');
-      const confirmPassword=fb.get('confrimPassword');
-
-      if(confirmPassword?.errors&&!confirmPassword?.errors?.['mismatch'])
-          return;
-
-      if(password?.value!==confirmPassword?.value){
-        confirmPassword?.setErrors({mismatch:true});
+      if (password?.value !== confirmPassword?.value) {
+        confirmPassword?.setErrors({ mismatch: true });
       }
       else
-      confirmPassword?.setErrors(null);
+        confirmPassword?.setErrors(null);
 
     }
   }
- 
-  get employeeName(){
+
+  get employeeName() {
     return this.employeeForm.get('employeeName');
   }
-  get email(){
+  get email() {
     return this.employeeForm.get('email');
   }
-  get phoneNumber(){
+  get phoneNumber() {
     return this.employeeForm.get('phoneNumber');
   }
-  get gender(){
+  get gender() {
     return this.employeeForm.get('gender');
   }
-  get department(){
+  get department() {
     return this.employeeForm.get('department');
   }
-  get module(){
+  get module() {
     return this.employeeForm.get('module');
   }
-  get position(){
+  get position() {
     return this.employeeForm.get('position');
   }
-  get password(){
+  get password() {
     return this.employeeForm.get('password');
   }
-  get confirmPassword(){
+  get confirmPassword() {
     return this.employeeForm.get('confirmPassword');
   }
-  
-  onSubmit(){
-    let formData=new FormData();
-    formData.append("profilePic",this.file,this.file.name)
-    formData.append("employeeObj",JSON.stringify(this.employeeForm.value))
 
-    this.adminService.addEmployee(formData).subscribe(res=>{
-      if(res.message=="Employee created"){
+  onSubmit() {
+    let formData = new FormData();
+    formData.append("profilePic", this.file, this.file.name)
+    formData.append("employeeObj", JSON.stringify(this.employeeForm.value))
+
+    this.adminService.addEmployee(formData).subscribe(res => {
+      if (res.message == "Employee created") {
         alert("added successfully")
         this.route.navigateByUrl("admin")
       }
-      else{
+      else {
         alert("please fill all details")
       }
     })
-    
+
   }
 }

@@ -130,9 +130,17 @@
                           <input type="password" id="password" class="form-control" formControlName="password" placeholder="Password"/>
                         </div>
                         <div *ngIf="password?.invalid && (password?.dirty || password?.touched)" class="text-danger">
-                          <p *ngIf="password?.errors?.['required']">*password is must</p>
+                          <input type="checkbox" class="" name="for_pass" disabled [checked]="!password?.errors?.['required']">
+                          <label for="">*password is must</label>
+                          <br>
+                          <input type="checkbox" name="for_pass" disabled [checked]="!password?.errors?.['minlength'] && password?.value.length>0">
+                          <label for="">*8 character long</label>
+                          <br>
+                          <input type="checkbox" name="for_pass" disabled [checked]="!password?.errors?.['pattern'] && password?.value.length>0">
+                          <label for="">*special character</label><p>,Uppercase</p>
+                          <!-- <p *ngIf="password?.errors?.['required']">*password is must</p>
                           <p *ngIf="password?.errors?.['minlength']">*password must 8 character long</p>
-                          <p *ngIf="password?.errors?.['pattern']">*password must contain special character,Uppercase</p>
+                          <p *ngIf="password?.errors?.['pattern']">*password must contain special character,Uppercase</p> -->
                         </div>
                       </div>
   

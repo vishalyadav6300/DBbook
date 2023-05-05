@@ -11,6 +11,7 @@ export class UserprofileComponent implements OnInit {
 
   employeeData=<usermodel>{}
   displayDetails:boolean=true
+  p:number=1
   constructor(private employeeService:EmployeeService){}
   ngOnInit(): void {
     this.employeeData=this.employeeService.user  

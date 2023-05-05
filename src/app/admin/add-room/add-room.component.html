@@ -40,15 +40,27 @@
               <label for="access">Access:</label>
               <div class="form-group" id="access" formArrayName="access"
                 *ngFor="let acc of access?.controls;let i=index">
-                <select class="form-control select mt-2" [formControlName]="i" required>
-                  <option value="">Access</option>
-                  <option value="HOD" #op1 [disabled]="access.value.indexOf(op1.value)!=-1">HOD</option>
-                  <option value="Team Lead" #op2 [disabled]="access.value.indexOf(op2.value)!=-1">Team Lead</option>
-                  <option value="Intern" #op3 [disabled]="access.value.indexOf(op3.value)!=-1">Intern</option>
-                  <option value="Product Lead" #op4 [disabled]="access.value.indexOf(op4.value)!=-1">Product Lead</option>
-                  <option value="Project Manager" #op5 [disabled]="access.value.indexOf(op5.value)!=-1">Project Manager</option>
-                  <option value="Engineer Manager" #op6 [disabled]="access.value.indexOf(op6.value)!=-1">Engineer Manager</option>
-                </select>
+                <div class="row">
+                  <div class="col-9">
+                    <select class="form-control select mt-2" [formControlName]="i" required>
+                      <option value="">Access</option>
+                      <option value="HOD" #op1 [disabled]="access.value.indexOf(op1.value)!=-1">HOD</option>
+                      <option value="Team Lead" #op2 [disabled]="access.value.indexOf(op2.value)!=-1">Team Lead</option>
+                      <option value="Intern" #op3 [disabled]="access.value.indexOf(op3.value)!=-1">Intern</option>
+                      <option value="Product Lead" #op4 [disabled]="access.value.indexOf(op4.value)!=-1">Product Lead
+                      </option>
+                      <option value="Project Manager" #op5 [disabled]="access.value.indexOf(op5.value)!=-1">Project
+                        Manager</option>
+                      <option value="Engineer Manager" #op6 [disabled]="access.value.indexOf(op6.value)!=-1">Engineer
+                        Manager</option>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <button class="mt-2 btn btn-black btn-rounded" type="button" (click)="deleteAccess(i)">
+                      <i class="fa fa-remove" style="font-size:12px"></i>
+                    </button>
+                  </div>
+                </div>
                 <div class="text-danger"
                   *ngIf="access.controls[i]?.invalid && (access.controls[i]?.dirty || access.controls[i]?.touched)">
                   * Access is required.
@@ -62,6 +74,7 @@
                 <div class="text-danger" *ngIf="capacity?.invalid && (capacity?.dirty || capacity?.touched)">
                   <div *ngIf="capacity?.errors?.['required']">Capacity is required.</div>
                   <div *ngIf="capacity?.errors?.['minlength']">Capacity must be at least 1.</div>
+                  <div *ngIf="capacity?.errors?.['min']">Capacity must be geater then zero</div>
                 </div>
               </div>
               <label for="image">Image:</label>
@@ -73,7 +86,7 @@
                 </div>
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-black btn-rounded text-center px-5 mt-3">Submit</button>
+                <button type="submit" class="btn btn-black btn-rounded text-center px-5 mt-3" [disabled]="roomBookingForm.invalid">Submit</button>
               </div>
             </form>
           </div>

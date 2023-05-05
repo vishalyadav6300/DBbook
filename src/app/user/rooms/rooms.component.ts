@@ -13,13 +13,18 @@ export class RoomsComponent implements OnInit{
   rooms:room[]=[]
   user=<usermodel>{}
   @Input() public iteam_search:string="";
+  p:number=1
+  isLoading = true;
   ngOnInit(): void {
     this.user=this.empservice.user
     this.empservice.allrooms().subscribe((res)=>{
       this.rooms=res.rooms
+      this.isLoading=false
       console.log(this.rooms)
     })
   }
-  constructor(private empservice:EmployeeService){}
+  constructor(private empservice:EmployeeService){
+    
+  }
 
 }

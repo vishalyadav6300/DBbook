@@ -12,17 +12,24 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { AdminModule } from './admin/admin.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
-import {FullCalendarModule} from '@fullcalendar/angular'
+import { FullCalendarModule } from '@fullcalendar/angular'
 
 import { AppHttpInterceptor } from './app-http.interceptor';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { PositivevalidationDirective } from './positivevalidation.directive';
+import { CacheinterceptorInterceptor } from './cacheinterceptor.interceptor';
+import { RequsettimeoutCompoent } from './requsettimeout/requsettimeout.component';
+import { TimeoutInterceptor } from './timeout.interceptor';
+import { ResponsehandlingInterceptor } from './responsehandling.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     NavbarComponent,
     FooterComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    PositivevalidationDirective,
+    RequsettimeoutCompoent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,10 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     FullCalendarModule,
     NgMultiSelectDropDownModule
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:AppHttpInterceptor,multi:true}],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: CacheinterceptorInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: TimeoutInterceptor, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: ResponsehandlingInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

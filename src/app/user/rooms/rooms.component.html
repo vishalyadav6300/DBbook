@@ -1,30 +1,38 @@
-<div class="container mt-4">
-  <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4">
-    <div class="col" *ngFor="let ele of rooms | search:iteam_search">
-      <div class="card h-100">
-        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-          <img src={{ele.image}} class="card-img-top" alt="Hollywood Sign on The Hill" height="250px" />
-          <a>
-            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-          </a>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{ele.roomName}}</h5>
-          <p class="card-text">
-            {{ele.roomType}}
-          </p>
-          <h6><b>Access</b></h6>
-          <span class="badge badge-primary mx-2" *ngFor="let access of ele.access">{{access}}</span>
-          <br>
-          <a routerLink="../book/{{ele._id}}" class="btn btn-black btn-rounded my-2"
-            *ngIf="ele.access.indexOf(this.user.position)!=-1; else noaccess">Book Now</a>
-          <ng-template #noaccess>
-            <a class="btn btn-secondary btn-rounded my-2 disabled">No Access</a>
-          </ng-template>
+<ng-container *ngIf="isLoading">
+  <div class="d-flex justify-content-center align-items-center" style="margin: 20%;">
+    <div class="spinner-border text-dark text-center " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="!isLoading">
+  <div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-sm-2 g-4">
+      <div class="col" *ngFor="let ele of rooms | search:iteam_search |paginate:{itemsPerPage:6,currentPage:p}">
+        <div class="card h-100">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+            <img src={{ele.image}} class="card-img-top" alt="Hollywood Sign on The Hill" height="250px" />
+            <a>
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ele.roomName}}</h5>
+            <p class="card-text">
+              {{ele.roomType}}
+            </p>
+            <h6><b>Access</b></h6>
+            <span class="badge badge-primary mx-2" *ngFor="let access of ele.access">{{access}}</span>
+            <br>
+            <a routerLink="../book/{{ele._id}}" class="btn btn-black btn-rounded my-2"
+              *ngIf="ele.access.indexOf(this.user.position)!=-1; else noaccess">Book Now</a>
+            <ng-template #noaccess>
+              <a class="btn btn-secondary btn-rounded my-2 disabled">No Access</a>
+            </ng-template>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-{{iteam_search}}
+  <pagination-controls class="text-center" style="margin: 20%;" (pageChange)="p=$event"></pagination-controls>
+</ng-container>

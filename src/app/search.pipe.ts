@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { debounceTime, distinctUntilChanged, Observable, switchMap } from 'rxjs';
 import { room } from './models/roommodel';
 
 @Pipe({
@@ -6,7 +7,7 @@ import { room } from './models/roommodel';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(values: room[], value:string): any {
+  transform(values: room[], value:string): room[] {
     if (!values || !value) {
       return values
     }

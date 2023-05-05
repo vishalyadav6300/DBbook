@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin.service';
 import { previousValueValidator } from 'src/app/Utilites/previousvaluevalidator';
@@ -11,7 +11,6 @@ import { previousValueValidator } from 'src/app/Utilites/previousvaluevalidator'
 })
 export class AddRoomComponent implements OnInit {
 
-
   roomBookingForm!: FormGroup;
   file!: File
 
@@ -22,11 +21,10 @@ export class AddRoomComponent implements OnInit {
       roomName: ['', [Validators.required, Validators.minLength(6)]],
       roomType: ['', [Validators.required, Validators.minLength(3)]],
       access: this.formBuilder.array([this.formBuilder.control('')], [Validators.maxLength(5)]),
-      capacity: [null, [Validators.required, Validators.min(1)]],
+      capacity: [0, [Validators.required, Validators.min(1),this.positiveNumberValidator]],
       image: ['', Validators.required]
     });
   }
-
   get roomName() {
     return this.roomBookingForm.get('roomName');
   }
@@ -42,21 +40,28 @@ export class AddRoomComponent implements OnInit {
   get image() {
     return this.roomBookingForm.get('image');
   }
-  // get images(){
-  //   return this.imageUploadForm.get('images') as FormArray;
-  // }
 
   selectFile(event: any) {
     this.file = event.target.files[0]
   }
-  // addImage():void{
-  //   this.images.push(this.formBuilder.control(''))
-  // }
+
   addAccess(): void {
     this.access.push(this.formBuilder.control(''));
   }
 
+  deleteAccess(index: number): void {
+    this.access.removeAt(index);
+    console.log(this.capacity)
+  }
 
+//custom validator to check positive number
+  positiveNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any }|null => {
+      const isNotOk = Number(control.value) < 0;
+      return isNotOk ? { nonPositive: { value: control.value } } : null;
+    }
+  }
+  
   onSubmit() {
     let formData = new FormData();
     formData.append("image", this.file, this.file.name)
@@ -68,7 +73,7 @@ export class AddRoomComponent implements OnInit {
         alert("added successfully")
         this.route.navigateByUrl("admin")
       }
-      else{
+      else {
         alert(res.message)
       }
     })

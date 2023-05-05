@@ -14,6 +14,8 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SearchPipe } from '../search.pipe';
 import { UserprofileComponent } from './userprofile/userprofile.component'
 import { DateconversionPipe } from '../dateconversion.pipe';
+import {NgxPaginationModule} from 'ngx-pagination'
+import { LoadingDirective } from '../Utilites/Loadingspinner';
 
 
 @NgModule({
@@ -26,14 +28,16 @@ import { DateconversionPipe } from '../dateconversion.pipe';
     DisplayroomComponent,
     SearchPipe,
     UserprofileComponent,
-    DateconversionPipe
+    DateconversionPipe,
+    LoadingDirective
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
     FullCalendarModule,
-    NgMultiSelectDropDownModule
+    NgMultiSelectDropDownModule,
+    NgxPaginationModule
   ]
 })
 export class UserModule { }
