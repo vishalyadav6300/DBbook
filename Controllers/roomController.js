@@ -9,8 +9,9 @@ async function addRoom(req,res){
         roomObj['image']=req.file.path;
         console.log(roomObj);
        let obj=await roomModel.findOne({roomName:roomObj.roomName});
+       console.log(obj)
         if(obj!==null){
-            res.send({mesage:'room name already exist'});
+            res.send({message:'room name already exist'});
             return;
         }
         await roomModel.create(roomObj);

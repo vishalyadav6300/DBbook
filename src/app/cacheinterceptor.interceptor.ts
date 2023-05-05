@@ -21,7 +21,7 @@ export class CacheinterceptorInterceptor implements HttpInterceptor {
     const cachedResponse = this.cache.get(req.url);
 
     if (cachedResponse) {
-      const delay = 10000; // 10 seconds
+      const delay = 2000; // 10 seconds
       const expirationTime = cachedResponse.headers.get('expires');
 
       if (expirationTime && Date.parse(expirationTime) < Date.now() + delay) {

@@ -14,12 +14,14 @@ import { FliterforroomsPipe } from 'src/app/shared/fliterforrooms.pipe';
   providers:[FliterforroomsPipe]
 })
 export class AllRoomsComponent implements OnInit {
+  
   rooms:room[]=[]
   user=<usermodel>{}
   roomBookingForm!: FormGroup;
   index:number=0;
   fliterRoomType!:string
-  constructor(private formBuilder: FormBuilder,private empservice:EmployeeService,private adminService:AdminService,private filterRoomTypePipe:FliterforroomsPipe){}
+  constructor(private formBuilder: FormBuilder,private empservice:EmployeeService,private adminService:AdminService,
+    private filterRoomTypePipe:FliterforroomsPipe,private route:Router){}
   ngOnInit(): void {
     this.empservice.allrooms().subscribe((res)=>{
       this.rooms=res.rooms
@@ -86,6 +88,12 @@ export class AllRoomsComponent implements OnInit {
 
     this.adminService.editRoom(roomObj).subscribe(res=>{
       console.log(res)
+      if(res.message=="updated successfully"){
+        alert(res.message)
+      }
+      else{
+        alert(res.message)
+      }
     })
 
   }

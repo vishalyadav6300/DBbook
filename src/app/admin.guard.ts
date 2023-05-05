@@ -13,7 +13,7 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     let token: string = localStorage.getItem("token") || ''
     if (!token) {
-      this.route.navigateByUrl("/pagenotfound")
+      this.route.navigateByUrl("/login")
       return false
     }
     token = atob(token.split(".")[1])

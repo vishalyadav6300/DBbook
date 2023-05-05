@@ -31,7 +31,7 @@ export class AddEmployeeComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6), Validators.pattern("^(?=.*[A-Z])(?=.*[!@#$%^&*()_+,\-.?])(?=.{8,})[a-zA-Z0-9!@#$%^&*()_+,\-.?]+$")]],
       confirmPassword: ['', Validators.required]
     }, {
-      validators: this.MustMatch('password', 'confirmPassword', 'email')
+      validators: this.MustMatch()
     }
     );
   }
@@ -41,7 +41,7 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   //custom validator for password check
-  MustMatch(password: string, confirmPassword: string, email: string) {
+  MustMatch() {
     return (fb: FormGroup) => {
       const password = fb.get('password');
       const confirmPassword = fb.get('confirmPassword');
@@ -97,7 +97,7 @@ export class AddEmployeeComponent implements OnInit {
         this.route.navigateByUrl("admin")
       }
       else {
-        alert("please fill all details")
+        alert(res.message)
       }
     })
 
