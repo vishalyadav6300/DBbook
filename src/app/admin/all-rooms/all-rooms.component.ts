@@ -1,21 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin.service';
 import { EmployeeService } from 'src/app/employee.service';
 import { room } from 'src/app/models/roommodel';
 import { usermodel } from 'src/app/models/usermodel';
+import { FliterforroomsPipe } from 'src/app/shared/fliterforrooms.pipe';
 
 @Component({
   selector: 'app-all-rooms',
   templateUrl: './all-rooms.component.html',
-  styleUrls: ['./all-rooms.component.css']
+  styleUrls: ['./all-rooms.component.css'],
+  providers:[FliterforroomsPipe]
 })
 export class AllRoomsComponent implements OnInit {
   rooms:room[]=[]
   user=<usermodel>{}
   roomBookingForm!: FormGroup;
-  index:number=0
-  constructor(private formBuilder: FormBuilder,private empservice:EmployeeService,private adminService:AdminService){}
+  index:number=0;
+  fliterRoomType!:string
+  constructor(private formBuilder: FormBuilder,private empservice:EmployeeService,private adminService:AdminService,private filterRoomTypePipe:FliterforroomsPipe){}
   ngOnInit(): void {
     this.empservice.allrooms().subscribe((res)=>{
       this.rooms=res.rooms
@@ -88,6 +92,9 @@ export class AllRoomsComponent implements OnInit {
   selectFile(event:any){
 
 
+  }
+  getFilteredRooms(): room[] {
+    return this.filterRoomTypePipe.transform(this.rooms, this.fliterRoomType);
   }
 
 }

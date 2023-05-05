@@ -2,16 +2,26 @@ const mongoose=require('mongoose');
 
 const roomSchema=mongoose.Schema({
     roomName:{
-        type:String
+        type:String,
+        required:true
     },
     roomType:{
-        type:String
+        type:String,
+        required:true
     },
     capacity:{
-        type:Number
+        type:Number,
+        required:true,
+        validate: {
+            validator: (v) => {
+                return v<0;
+            },
+            message: 'Invalid capacity.'
+        },
     },
     image:{
-        type:String
+        type:String,
+        required:true
     },
     access:[{
         type:String

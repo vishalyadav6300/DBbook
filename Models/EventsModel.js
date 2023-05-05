@@ -4,21 +4,26 @@ const roomModel=require('./../Models/roomModel').roomModel
 
 const eventSchema=mongoose.Schema({
     event_name:{
-        type:String
+        type:String,
+        required:true
     },
     start_time:{
-        type:Date
+        type:Date,
+        required:true
     },
     end_time:{
-        type:Date
+        type:Date,
+        required:true
     },
     host:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:employeeModel
+        ref:employeeModel,
+        required:true
     },
     room:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:roomModel
+        ref:roomModel,
+        required:true
     },
     status:{
         type:String,

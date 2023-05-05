@@ -5,10 +5,11 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { AddRoomComponent } from './add-room/add-room.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AllRoomsComponent } from './all-rooms/all-rooms.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +24,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CommonModule,
     AdminRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    FormsModule
   ]
 })
 export class AdminModule { }

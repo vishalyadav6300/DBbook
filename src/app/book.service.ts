@@ -7,7 +7,8 @@ import { usermodel } from './models/usermodel';
 import { baseUrl,bookServiceUrls } from './route-config';
 interface filterresponse{
   message:string,
-  rooms:room[]
+  rooms:room[],
+  events:eventmodel[]
 }
 interface eventsresponse{
   message:string,
@@ -23,6 +24,10 @@ export class BookService {
 
   getRoomById(id:any):Observable<filterresponse>{
     return this.hc.post<filterresponse>(`${baseUrl}${bookServiceUrls.roomFilter}`,id);
+  }
+
+  getRoomEvents(roomName:string):Observable<filterresponse>{
+    return this.hc.post<filterresponse>(`${baseUrl}${bookServiceUrls.roomEvents}/${roomName}`,{});
   }
 
   addEvents(eventObj:any):Observable<{message:string}>{

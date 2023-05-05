@@ -1,0 +1,38 @@
+<section class="mb-4 mt-5">
+    <div class="container">
+        <div class="card  text-white" style="background-color: black;">
+            <div class="card-header text-center py-3">
+                <h5 class="mb-0 text-center">
+                    <strong>{{roomName}} Events</strong>
+                </h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover text-nowrap text-white">
+                        <thead>
+                            <tr>
+                                <th scope="col">Host Name</th>
+                                <th scope="col">Event Name</th>
+                                <th scope="col">Invitess</th>
+                                <th scope="col">Start Time</th>
+                                <th scope="col">End Time</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf="roomEvents.length!=0; else noevents">
+                            <tr *ngFor="let ele of roomEvents">
+                                <td>{{ele.host.employeeName}}</td>
+                                <td>{{ele.event_name}}</td>
+                                <td>{{ele.invitees.length}}</td>
+                                <td>{{ele.start_time | date:'short' }}</td>
+                                <td>{{ele.end_time | date:'short' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ng-template #noevents>
+                        <tr><td></td><td></td> <td><h5 class="text-center my-2 display-5 text-danger">No Events </h5></td></tr>
+                    </ng-template>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

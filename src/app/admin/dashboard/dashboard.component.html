@@ -73,12 +73,12 @@
                             </thead>
                             <tbody>
                                 <tr *ngFor="let ele of todayevents">
-                                    <td>{{ele.host.employeeName}}</td>
+                                    <td>{{ele.host.employeeName | uppercase}}</td>
                                     <td>{{ele.room.roomType}}</td>
                                     <td>{{ele.event_name}}</td>
                                     <td>{{ele.room.roomName}}</td>
-                                    <td>{{ele.start_time}}</td>
-                                    <td>{{ele.end_time}}</td>
+                                    <td>{{ele.start_time |date}}</td>
+                                    <td>{{ele.end_time | date}}</td>
                                 </tr>
                             </tbody>
                         </table>
