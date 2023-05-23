@@ -3,6 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { BookService } from 'src/app/book.service';
+import { endDateNotBeforeStartDateValidator } from 'src/app/Utilites/endtimevalidation';
+import { dateNotBeforeTodayValidator } from 'src/app/Utilites/previousdatevalidation';
 
 interface employee {
   _id: string,
@@ -60,12 +62,14 @@ export class BookroomComponent implements OnInit {
     this.empObj = JSON.parse(localStorage.getItem('user') || '{}')
     this.bookRoomForm = this.formBuilder.group({
       event_name: ['', Validators.required, Validators.minLength(6)],
-      start_time: ['', [Validators.required]],
-      end_time: ['', [Validators.required]],
+      start_time: ['', [Validators.required,dateNotBeforeTodayValidator()]],
+      end_time: ['', [Validators.required,dateNotBeforeTodayValidator()]],
       host: [this.empObj.employeeName, [Validators.required]],
       room: [this.roomname, [Validators.required]],
-      invitees: this.formBuilder.array([this.formBuilder.control('')])
+      invitees: this.formBuilder.array([this.formBuilder.control('')],
+      )
     })
+    this.bookRoomForm.setValidators(endDateNotBeforeStartDateValidator('start_time','end_time'))
 
     this.bookRoomForm.get('host')?.disable();
     this.bookRoomForm.get('room')?.disable();

@@ -12,12 +12,12 @@ const roomSchema=mongoose.Schema({
     capacity:{
         type:Number,
         required:true,
-        validate: {
-            validator: (v) => {
-                return v<0;
-            },
-            message: 'Invalid capacity.'
-        },
+        // validate: {
+        //     validator: (v) => {
+        //         return v<0;
+        //     },
+        //     message: 'Invalid capacity.'
+        // },
     },
     image:{
         type:String,

@@ -41,7 +41,8 @@
                     <input type="datetime-local" id="Start" class="form-control form-input" id="name"
                       formControlName="start_time">
                     <div class="text-danger" *ngIf="start_time?.invalid && (start_time?.dirty || start_time?.touched)">
-                      *start time is required.
+                      <p *ngIf="start_time?.errors?.['required']">*start time is required.</p>
+                      <p *ngIf="start_time?.errors?.['dateNotBeforeToday']">*previous to today</p>
                     </div>
                   </div>
                 </div>
@@ -50,8 +51,10 @@
                     <label for="End">End Time</label>
                     <input type="datetime-local" id="End" class="form-control form-input" id="name"
                       formControlName="end_time">
-                    <div class="text-danger" *ngIf="end_time?.invalid && (end_time?.dirty || end_time?.touched)">
-                      *end time is required.
+                    <div class="text-danger" *ngIf="bookRoomForm.errors?.['endDateNotBeforeStartDate'] || (end_time?.invalid && (end_time?.dirty || end_time?.touched))">
+                      <p *ngIf="end_time?.errors?.['required']">*start time is required.</p>
+                      <p *ngIf="end_time?.errors?.['dateNotBeforeToday']">*previous to today</p>
+                      <p *ngIf="bookRoomForm.errors?.['endDateNotBeforeStartDate']">*previous to start time</p>
                     </div>
                   </div>
                 </div>
@@ -59,7 +62,8 @@
               <div class="form-group mt-2">
                 <ng-multiselect-dropdown [settings]="dropdownSettingsforgenre" *ngIf="selection_data" [data]="invites"
                   [placeholder]="'invites'" (onSelect)="onItemSelect($event)" (onSelectAll)="onItemallselect($event)"
-                  (onDeSelect)="onItemdeselect($event)" (onDeSelectAll)="onItemdeselectall($event)" style="color: black;">
+                  (onDeSelect)="onItemdeselect($event)" (onDeSelectAll)="onItemdeselectall($event)"
+                  style="color: black;">
                 </ng-multiselect-dropdown>
               </div>
               <div class="text-center mt-2">
