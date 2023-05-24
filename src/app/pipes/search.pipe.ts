@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { debounceTime, distinctUntilChanged, Observable, switchMap } from 'rxjs';
-import { room } from './models/roommodel';
+import { room } from '../models/roommodel';
 
 @Pipe({
   name: 'search'

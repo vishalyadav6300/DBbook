@@ -19,7 +19,7 @@ const verifyTokenUser=(req,res,next)=>{
         //verify the token
         jwt.verify(token,process.env.SECRETKEYUSER,(err,decoded)=>{
               if(err){
-               res.send({message:"session expired .... login to continue"})
+               res.status(401).json({message:"session expired .... login to continue"})
                console.log(err.message)
               }
               else{

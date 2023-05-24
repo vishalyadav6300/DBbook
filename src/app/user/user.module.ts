@@ -9,9 +9,9 @@ import { DisplayroomComponent } from './displayroom/displayroom.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FullCalendarModule} from '@fullcalendar/angular'
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { SearchPipe } from '../search.pipe';
+import { SearchPipe } from '../pipes/search.pipe';
 import { UserprofileComponent } from './userprofile/userprofile.component'
-import { DateconversionPipe } from '../dateconversion.pipe';
+import { DateconversionPipe } from '../pipes/dateconversion.pipe';
 import {NgxPaginationModule} from 'ngx-pagination'
 import { LoadingDirective } from '../Utilites/Loadingspinner';
 import { UserRoutingModule } from './user-routing.module';

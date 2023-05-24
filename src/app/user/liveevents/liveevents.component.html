@@ -2,3 +2,20 @@
     <full-calendar class="border border-2 border-secondary rounded p-4" style="box-shadow: 1px 1px 8px rgb(89, 89, 89);"
         [options]="calendarOptions"></full-calendar>
 </div>
+
+<div class="modal" [ngClass]="{ 'open': openmodel }">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 style="text-transform:capitalize;">{{modelevent.title}}</h5>
+        </div>
+        <div class="modal-body">
+            <h5>Event start time</h5>
+            <p>{{modelevent.start | dateconversion}}</p>
+            <h5>Event end time</h5>
+            <p>{{modelevent.end | dateconversion}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-black btn-rounded" (click)="closemodel()">Close</button>
+        </div>
+    </div>
+</div>

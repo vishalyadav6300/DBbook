@@ -14,13 +14,13 @@ import { AdminModule } from './admin/admin.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { FullCalendarModule } from '@fullcalendar/angular'
 
-import { AppHttpInterceptor } from './app-http.interceptor';
+import { AppHttpInterceptor } from './interceptors/app-http.interceptor';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { PositivevalidationDirective } from './positivevalidation.directive';
-import { CacheinterceptorInterceptor } from './cacheinterceptor.interceptor';
+import { PositivevalidationDirective } from './Utilites/positivevalidation.directive';
+import { CacheinterceptorInterceptor } from './interceptors/cacheinterceptor.interceptor';
 import { RequsettimeoutCompoent } from './requsettimeout/requsettimeout.component';
-import { TimeoutInterceptor } from './timeout.interceptor';
-import { ResponsehandlingInterceptor } from './responsehandling.interceptor';
+import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
+import { ResponsehandlingInterceptor } from './interceptors/responsehandling.interceptor';
 
 @NgModule({
   declarations: [

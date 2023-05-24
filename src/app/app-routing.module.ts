@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminGuard } from './admin.guard';
-import { LoginGuard } from './login.guard';
+import { AdminGuard } from './guards/admin.guard';
+import { LoginGuard } from './guards/login.guard';
 import { LoginComponent } from './login/login.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RequsettimeoutCompoent } from './requsettimeout/requsettimeout.component';
-import { UserGuard } from './user.guard';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   { path: 'admin', canActivate: [AdminGuard], loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule) },

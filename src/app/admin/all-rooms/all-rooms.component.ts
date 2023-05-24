@@ -84,10 +84,10 @@ export class AllRoomsComponent implements OnInit {
       _id:this.rooms[this.index]._id,
       room:roomObj
     }
-    console.log(roomObj);
+    // console.log(roomObj);
 
     this.adminService.editRoom(roomObj).subscribe(res=>{
-      console.log(res)
+      // console.log(res)
       if(res.message=="updated successfully"){
         alert(res.message)
       }

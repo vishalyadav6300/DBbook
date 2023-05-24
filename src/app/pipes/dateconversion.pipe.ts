@@ -9,7 +9,6 @@ export class DateconversionPipe implements PipeTransform {
   transform(value: any): any {
     if (value) {
       value=new Date(value)
-      console.log(value)
       const date = value.getDate().toString().padStart(2, '0');
       const month = (value.getMonth() + 1).toString().padStart(2, '0');
       const year = value.getFullYear();
