@@ -8,9 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { AdminModule } from './admin/admin.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { FullCalendarModule } from '@fullcalendar/angular'
 
@@ -27,7 +25,6 @@ import { ResponsehandlingInterceptor } from './responsehandling.interceptor';
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    FooterComponent,
     PagenotfoundComponent,
     PositivevalidationDirective,
     RequsettimeoutCompoent

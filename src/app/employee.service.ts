@@ -44,4 +44,8 @@ export class EmployeeService {
   allrooms():Observable<responseroom>{
     return this.hc.get<responseroom>(`${baseUrl}${employeeServiceUrls.allRooms}`)
   }
+
+  paginateForMyEvents(paginateObj:any):Observable<any>{
+    return this.hc.post(`${baseUrl}/employee/paginate`,paginateObj)
+  }
 }

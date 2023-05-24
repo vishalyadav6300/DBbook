@@ -51,4 +51,17 @@ async function getEmployee(req,res){
 
 }
 
-module.exports={addEmployee,allEmployees,getEmployee}
+
+async function pagination(req,res){
+
+    let paginateObj=req.body;
+    let employee = await employeeModel.findOne({ email: paginateObj.email }).populate('Events',null,eventModel)
+    
+    let events=employee.Events;
+    let start=paginateObj.limit*(paginateObj.page-1);
+    let end=paginateObj.limit*paginateObj.page;
+
+    res.send({events:events.slice(start,end)});
+
+}
+module.exports={addEmployee,allEmployees,getEmployee,pagination}

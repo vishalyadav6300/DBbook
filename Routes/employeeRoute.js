@@ -13,5 +13,7 @@ employeeRoute.post('/add-employee',verifyTokenAdmin,upload.single('profilePic'),
 
 employeeRoute.get('/all-employee',verifyTokenUser,empolyeeController.allEmployees);
 
+employeeRoute.post('/paginate',empolyeeController.pagination);
+
 
 module.exports={employeeRoute}

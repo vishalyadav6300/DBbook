@@ -37,21 +37,22 @@ async function allrooms(req, res) {
 async function updateRoom(req, res) {
     try {
         let roomObj = req.body;
-        // console.log(roomObj.room);
-        // let check = await roomModel.findOne({ roomName: roomObj.room.roomName })
-        // console.log(check)
-        // if (check == null) {
+        let prevRoomObj = await roomModel.findOne({ _id: roomObj._id });
+        if (prevRoomObj.roomName === roomObj.room.roomName) {
             await roomModel.findOneAndUpdate({ _id: roomObj._id }, roomObj.room);
             res.send({ message: 'updated successfully' })
-        // }
-        // else{
-        //     if(roomObj.room.capacity!=check.capacity){
-        //         await roomModel.findOneAndUpdate({_id:roomObj._id},{capacity:roomObj.room.capacity})
-        //         res.send({message:'done'})
-        //     }
-        //     res.send({message:'room name already present'})
-        // }
-
+        }
+        else {
+            let rooms = await roomModel.find({ roomName: roomObj.room.roomName });
+            let count = rooms.length;
+            if (count == 1) {
+                res.send({ message: 'room name already existing' })
+            }
+            else {
+                await roomModel.findOneAndUpdate({ _id: roomObj._id }, roomObj.room);
+                res.send({ message: 'updated successfully' })
+            }
+        }
     }
     catch (err) {
         console.log(err);

@@ -56,7 +56,7 @@ app.use('/room', roomRoute);
 app.use('/event', eventRoute);
 app.post('/login', async (req, res) => {
     let userobj = req.body
-    let user = await employeeModel.findOne({ email: userobj.email }).populate('Events',null,eventModel).populate('Events.host')
+    let user = await employeeModel.findOne({ email: userobj.email })
     let admin = await adminModel.findOne({ email: userobj.email })
     if (admin) {
         if (admin.password == userobj.password) {
