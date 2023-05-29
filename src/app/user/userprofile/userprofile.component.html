@@ -78,7 +78,7 @@
                 <div class="container h-100">
                     <div class="row d-flex justify-content-center align-items-center h-100">
                         <h4 class="text-center display-5 ">Your Event's</h4>
-                      <div class="col col-xl-11" *ngFor="let event of employeeData.Events | paginate:{itemsPerPage:3,currentPage:p}">
+                      <div class="col col-xl-11" *ngFor="let event of events">
                         <div class="card mb-5 text-white" style="border-radius: 15px;background-color: rgb(0, 0, 0);">
                           <div class="card-body p-4">
                             <h3 class="mb-3">{{event.event_name | uppercase}}</h3>
@@ -101,8 +101,26 @@
                           </div>
                         </div>
                       </div>
-                      <pagination-controls class="text-center" style="margin: 3%;" (pageChange)="p=$event"></pagination-controls>
-                    </div>
+                      
+                      <div class="text-center mx-auto">
+                        <nav class="mx-auto" aria-label="...">
+                          <ul class="pagination">
+                            <li class="page-item ">
+                              <a class="page-link" (click)="getEventsAccordingtoPages(currentPage-1)">Previous</a>
+                            </li>
+                            <li class="page-item" >
+                              <a class="page-link" (click)="getEventsAccordingtoPages(1)" >1</a></li>
+                            <li class="page-item active" aria-current="page">
+                              <a class="page-link" (click)="getEventsAccordingtoPages(2)" >2 <span class="visually-hidden">(current)</span></a>
+                            </li>
+                            <li class="page-item" (click)="getEventsAccordingtoPages(3)" ><a class="page-link" >3</a></li>
+                            <li class="page-item">
+                              <a class="page-link" (click)="getEventsAccordingtoPages(currentPage+1)">Next</a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                      </div>
                   </div>
             </div>
           </div>

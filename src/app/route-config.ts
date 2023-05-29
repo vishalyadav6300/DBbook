@@ -20,7 +20,8 @@ export const adminServiceUrls={
     dashboard:'/admin/dashboard',
     addEmployee:'/employee/add-employee',
     addRoom:'/room/add-room',
-    editRoom:'/room/edit-room'
+    editRoom:'/room/edit-room',
+    checkuser:'/employee/checkuser'
 
 }
 

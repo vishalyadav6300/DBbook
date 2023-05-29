@@ -1,6 +1,6 @@
-const { employeeModel } = require('../Models/employeeModel');
+const { employeeModel } = require('../models/employeeModel');
 
-const eventModel = require('./../Models/EventsModel').eventModel
+const eventModel = require('./../models/EventsModel').eventModel
 
 async function AddEvents(req, res) {
 

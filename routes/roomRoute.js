@@ -1,12 +1,12 @@
 const express=require('express');
-const { verifyTokenAdmin, verifyTokenUser } = require('../Middlewares/verifyToken');
+const { verifyTokenAdmin, verifyTokenUser } = require('../middlewares/verifyToken');
 
 const roomRoute=express.Router();
 
-const upload=require('./../Middlewares/multer').multerObj
+const upload=require('../middlewares/multer').multerObj
 
 
-const roomController=require('./../Controllers/roomController')
+const roomController=require('./../controllers/roomController')
 
 
 

@@ -8,15 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
-import { AdminModule } from './admin/admin.module';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { FullCalendarModule } from '@fullcalendar/angular'
 
 import { AppHttpInterceptor } from './interceptors/app-http.interceptor';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { PositivevalidationDirective } from './Utilites/positivevalidation.directive';
+import { PositivevalidationDirective } from './utilites/positivevalidation.directive';
 import { CacheinterceptorInterceptor } from './interceptors/cacheinterceptor.interceptor';
 import { RequsettimeoutCompoent } from './requsettimeout/requsettimeout.component';
 import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
@@ -27,7 +25,6 @@ import { ResponsehandlingInterceptor } from './interceptors/responsehandling.int
     AppComponent,
     LoginComponent,
     NavbarComponent,
-    FooterComponent,
     PagenotfoundComponent,
     PositivevalidationDirective,
     RequsettimeoutCompoent

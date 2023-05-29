@@ -1,10 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-3">
+<div class="container d-flex justify-content-center align-items-center mt-2">
       <div class="form-group">
-        <label class="form-label" for="roomType">Room Type:</label>
-        <select class="form-control form-input" id="roomType" [(ngModel)]="fliterRoomType">
-          <option value="">-- Select Room Type --</option>
+        <label class="form-label" style="min-width: 30vw;" for="roomType">Room Type:</label>
+        <select class="select form-control" id="roomType" [(ngModel)]="fliterRoomType">
+          <option value="" active>-- Select Room Type --</option>
           <option value="Conference Room">Conference Room</option>
           <option value="Meeting Room">Meeting Room</option>
           <option value="Training Room">Training Room</option>
@@ -16,8 +14,6 @@
           <option value="Focus Room">Focus Room</option>
           <option value="Collaboration Room">Collaboration Room</option>
         </select>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -134,22 +130,17 @@
           <div class="form-group">
             <label for="capacity">Capacity:</label>
             <input type="number" class="form-control" id="capacity" formControlName="capacity" required />
-            <div class="text-danger" *ngIf="
-                capacity?.invalid && (capacity?.dirty || capacity?.touched)
-              ">
-              <div *ngIf="capacity?.errors?.['required']">
-                Capacity is required.
-              </div>
-              <div *ngIf="capacity?.errors?.['minlength']">
-                Capacity must be at least 1.
-              </div>
+            <div class="text-danger" *ngIf="capacity?.invalid && (capacity?.dirty || capacity?.touched)">
+              <div *ngIf="capacity?.errors?.['required']">Capacity is required.</div>
+              <div *ngIf="capacity?.errors?.['minlength']">Capacity must be at least 1.</div>
+              <div *ngIf="capacity?.errors">Capacity must be geater then zero</div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-mdb-dismiss="modal">
               Close
             </button>
-            <button type="submit" class="btn btn-success">Save changes</button>
+            <button type="submit" class="btn btn-success" [disabled]="roomBookingForm.invalid">Save changes</button>
           </div>
         </form>
       </div>

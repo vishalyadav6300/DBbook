@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { debounceTime, Observable, Subject, switchMap } from 'rxjs';
 import { usermodel } from './models/usermodel';
 import {baseUrl,adminServiceUrls} from './route-config'
 interface dashboardresponse{
@@ -18,6 +18,8 @@ interface addemployeeresponse{
   providedIn: 'root'
 })
 export class AdminService {
+
+  private debounceSubject = new Subject<string>();
 
   constructor(private hc:HttpClient) { }
 
@@ -39,5 +41,20 @@ export class AdminService {
   editRoom(roomObj:Object):Observable<{message:string}>{
     return this.hc.post<{message:string}>(`${baseUrl}${adminServiceUrls.editRoom}`,roomObj);
   }
-  
+
+
+  public getDebouncedObservable(delay: number): Observable<any> {
+    return this.debounceSubject.pipe(
+      debounceTime(delay),
+      switchMap((event) => this.getemployeeuser(event))
+    );
+  }
+
+  public emitEvent(event: string): void {
+    this.debounceSubject.next(event);
+  }
+
+  getemployeeuser(username:string):Observable<{message:string}>{
+    return this.hc.get<{message:string}>(`${baseUrl}${adminServiceUrls.checkuser}/${username}`)
+  }
 }

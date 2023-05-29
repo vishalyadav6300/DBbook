@@ -1,9 +1,9 @@
 const express=require('express');
-const { verifyTokenUser } = require('../Middlewares/verifyToken');
+const { verifyTokenUser } = require('../middlewares/verifyToken');
 
 const eventRoute=express.Router();
 
-const eventController=require('./../Controllers/eventController')
+const eventController=require('./../controllers/eventController')
 
 eventRoute.post('/add-event',verifyTokenUser,eventController.AddEvents);
 

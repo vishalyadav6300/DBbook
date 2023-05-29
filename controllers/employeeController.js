@@ -1,6 +1,6 @@
 //importing employee model
-const employeeModel=require('./../Models/employeeModel').employeeModel
-const eventModel=require('./../Models/EventsModel').eventModel
+const employeeModel=require('./../models/employeeModel').employeeModel
+const eventModel=require('./../models/EventsModel').eventModel
 
 async function addEmployee(req,res){
     try{
@@ -51,4 +51,28 @@ async function getEmployee(req,res){
 
 }
 
-module.exports={addEmployee,allEmployees,getEmployee}
+
+async function pagination(req,res){
+
+    let paginateObj=req.body;
+    let employee = await employeeModel.findOne({ email: paginateObj.email }).populate('Events',null,eventModel)
+    
+    let events=employee.Events;
+    let start=paginateObj.limit*(paginateObj.page-1);
+    let end=paginateObj.limit*paginateObj.page;
+
+    res.send({events:events.slice(start,end)});
+
+}
+
+async function checkuser(req,res){
+    let check=await employeeModel.findOne({email:req.params.user})
+    if(check){
+        res.send({messgae:"user already exists"})
+    }
+    else{
+        res.send({message:"user name is fine"})
+    }
+}
+
+module.exports={addEmployee,allEmployees,getEmployee,pagination,checkuser}

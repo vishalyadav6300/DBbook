@@ -1,6 +1,6 @@
-const eventmodel = require("../Models/EventsModel").eventModel
-const roommodel = require("../Models/roomModel").roomModel
-const usermodel = require("../Models/employeeModel").employeeModel
+const eventmodel = require("../models/EventsModel").eventModel
+const roommodel = require("../models/roomModel").roomModel
+const usermodel = require("../models/employeeModel").employeeModel
 
 
 async function dashboard(req, res) {

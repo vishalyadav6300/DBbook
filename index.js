@@ -18,16 +18,16 @@ const http = require("http").createServer(app)
 require("dotenv").config()
 
 //importing modules
-const employeeModel = require("./Models/employeeModel").employeeModel
-const adminModel = require('./Models/adminModel').adminModel
+const employeeModel = require("./models/employeeModel").employeeModel
+const adminModel = require('./models/adminModel').adminModel
 
 
 //import express async-handler
 const errorHandler = require('express-async-handler')
 
 const cors = require("cors")
-const { eventModel } = require("./Models/EventsModel")
-const { roomModel } = require("./Models/roomModel")
+const { eventModel } = require("./models/EventsModel")
+const { roomModel } = require("./models/roomModel")
 app.use(cors())
 app.use(session({
     secret: uuidv4(),
@@ -45,10 +45,10 @@ mongoose.connect(process.env.MONGOURL).then(
 app.use(express.json())
 
 //importing routes
-const employeeRoute = require('./Routes/employeeRoute').employeeRoute
-const roomRoute = require('./Routes/roomRoute').roomRoute
-const eventRoute = require('./Routes/eventRoute').eventRoute
-const adminroute=require('./Routes/adminRoute').adminroute
+const employeeRoute = require('./routes/employeeRoute').employeeRoute
+const roomRoute = require('./routes/roomRoute').roomRoute
+const eventRoute = require('./routes/eventRoute').eventRoute
+const adminroute=require('./routes/adminRoute').adminroute
 
 app.use('/admin',adminroute)
 app.use('/employee', employeeRoute);
@@ -56,7 +56,7 @@ app.use('/room', roomRoute);
 app.use('/event', eventRoute);
 app.post('/login', async (req, res) => {
     let userobj = req.body
-    let user = await employeeModel.findOne({ email: userobj.email }).populate('Events',null,eventModel).populate('Events.host')
+    let user = await employeeModel.findOne({ email: userobj.email })
     let admin = await adminModel.findOne({ email: userobj.email })
     if (admin) {
         if (admin.password == userobj.password) {

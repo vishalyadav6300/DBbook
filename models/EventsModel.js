@@ -1,6 +1,6 @@
 const mongoose=require('mongoose');
 const employeeModel=require('./employeeModel').employeeModel
-const roomModel=require('./../Models/roomModel').roomModel
+const roomModel=require('./../models/roomModel').roomModel
 
 const eventSchema=mongoose.Schema({
     event_name:{

@@ -1,7 +1,7 @@
 <div class="container-fluid mt-4" *ngFor="let ele of roomTypes">
     <h5 class="text-dark mx-3"><b>{{ele.roomType}}</b></h5>
     <div class="d-flex flex-row flex-nowrap overflow-auto">
-        <div class="card mx-2" style="min-width: 250px; max-width: 300px;"
+        <div class="card mx-2" style="min-width: 250px; max-width: 250px;"
             *ngFor="let room of ele.rooms">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                 <img src="{{room.image}}" class="img-fluid" style="width: 100%; height: 200px;"/>

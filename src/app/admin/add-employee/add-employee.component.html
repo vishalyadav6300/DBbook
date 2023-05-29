@@ -32,12 +32,14 @@
                   <div class="row">
                       <div class="col-md-6 mb-4">
                         <div class="">
-                          <input type="email" id="email" class="form-control" formControlName="email" placeholder="Email"/>
+                          <input type="email" id="email" class="form-control" formControlName="email" placeholder="Email" (input)="userexist(val.value)" #val/>
                         </div>
+                        
                         <div *ngIf="email?.invalid && (email?.dirty || email?.touched)" class="text-danger">
                           <p *ngIf="email?.errors?.['required'] text-start">*email is must</p>
                           <p *ngIf="email?.errors?.['email']">*email is invalid.</p>
                         </div>
+                        <p *ngIf="userexists" class="text-danger">*username is already taken</p>
                       </div>
                       <div class="col-md-6 mb-4">
                         <div class="">

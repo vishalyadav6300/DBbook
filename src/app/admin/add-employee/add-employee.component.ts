@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime, pipe } from 'rxjs';
 import { AdminService } from 'src/app/admin.service';
 
 
@@ -14,12 +15,22 @@ export class AddEmployeeComponent implements OnInit {
 
   employeeForm!: FormGroup;
   submitted = false
+  userexists:boolean=false
 
   constructor(private fb: FormBuilder, private adminService: AdminService,
     private route: Router) {
   }
 
   ngOnInit(): void {
+    this.adminService.getDebouncedObservable(1000).subscribe((res)=>{
+      if(res.message=="user name is fine"){
+        this.userexists=false
+      }
+      else{
+        this.userexists=true
+      }
+    })
+
     this.employeeForm = this.fb.group({
       employeeName: ['', [Validators.required, Validators.minLength(6)]],
       email: ['', [Validators.required, Validators.email]],
@@ -102,4 +113,9 @@ export class AddEmployeeComponent implements OnInit {
     })
 
   }
+
+  userexist(event:string){
+    this.adminService.emitEvent(event)
+  }
+
 }

@@ -3,8 +3,8 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { BookService } from 'src/app/book.service';
-import { endDateNotBeforeStartDateValidator } from 'src/app/Utilites/endtimevalidation';
-import { dateNotBeforeTodayValidator } from 'src/app/Utilites/previousdatevalidation';
+import { endDateNotBeforeStartDateValidator } from 'src/app/utilites/endtimevalidation';
+import { dateNotBeforeTodayValidator } from 'src/app/utilites/previousdatevalidation';
 
 interface employee {
   _id: string,

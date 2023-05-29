@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/admin.service';
 import { EmployeeService } from 'src/app/employee.service';
@@ -31,9 +31,10 @@ export class AllRoomsComponent implements OnInit {
       roomName: ['', [Validators.required, Validators.minLength(6)]],
       roomType: ['', [Validators.required, Validators.minLength(3)]],
       access: this.formBuilder.array([],[Validators.maxLength(5)]),
-      capacity: [null, [Validators.required, Validators.min(1)]]
+      capacity: [0, [Validators.required, Validators.minLength(1),this.positiveNumberValidator]]
     });
   }
+
 
   get roomName(){
     return this.roomBookingForm.get('roomName');
@@ -57,7 +58,12 @@ export class AllRoomsComponent implements OnInit {
     this.access.removeAt(index);
   }
 
-
+  positiveNumberValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any }|null => {
+      const isNotOk = Number(control.value) < 0;
+      return isNotOk ? { nonPositive: { value: control.value } } : null;
+    }
+  }
   getData(index:number){
     this.index=index
     console.log(index);
@@ -75,8 +81,6 @@ export class AllRoomsComponent implements OnInit {
 
   }
   onSubmit(){
-
-    console.log(this.index);
     this.access.enable();
     let roomObj=this.roomBookingForm.value;
 
@@ -84,10 +88,9 @@ export class AllRoomsComponent implements OnInit {
       _id:this.rooms[this.index]._id,
       room:roomObj
     }
-    // console.log(roomObj);
+
 
     this.adminService.editRoom(roomObj).subscribe(res=>{
-      // console.log(res)
       if(res.message=="updated successfully"){
         alert(res.message)
       }
@@ -97,10 +100,7 @@ export class AllRoomsComponent implements OnInit {
     })
 
   }
-  selectFile(event:any){
-
-
-  }
+  
   getFilteredRooms(): room[] {
     return this.filterRoomTypePipe.transform(this.rooms, this.fliterRoomType);
   }
