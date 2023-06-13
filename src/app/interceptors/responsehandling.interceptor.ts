@@ -19,12 +19,12 @@ export class ResponsehandlingInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       catchError(error => {
         if (error instanceof HttpErrorResponse) {
-          if (error.status === 0) {
+          if (error.status === 0) {//network related or cors orgin
             this.route.navigateByUrl("pagenotfound")
-          } else if (error.status === 404) {
+          } else if (error.status === 404) {//page not found
             this.route.navigateByUrl("pagenotfound")
             
-          } else if(error.status===401) {
+          } else if(error.status===401) {//unauthorized access
             this.route.navigateByUrl("pagenotfound")
           }
           else{

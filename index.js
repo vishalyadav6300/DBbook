@@ -9,6 +9,7 @@ const bcryptjs = require('bcryptjs')
 const { v4: uuidv4 } = require("uuid")
 const app = express()
 const path = require("path")
+app.use(express.static(path.join(__dirname,'./dist/dbbook')))
 
 //import json web token
 const jwt = require("jsonwebtoken")

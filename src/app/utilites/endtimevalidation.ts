@@ -8,8 +8,6 @@ export function endDateNotBeforeStartDateValidator(startControlName: string, end
       const startDate = new Date(startControl.value);
       const endDate = new Date(endControl.value);
       if (endDate < startDate) {
-        console.log(startDate)
-        console.log(endDate)
         return { endDateNotBeforeStartDate: true };
       }
     }

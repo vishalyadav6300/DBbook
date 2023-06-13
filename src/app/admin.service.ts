@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { debounceTime, Observable, Subject, switchMap } from 'rxjs';
+import { debounceTime, Observable, pipe, Subject, tap , switchMap } from 'rxjs';
 import { usermodel } from './models/usermodel';
 import {baseUrl,adminServiceUrls} from './route-config'
 interface dashboardresponse{
@@ -43,7 +43,7 @@ export class AdminService {
   }
 
 
-  public getDebouncedObservable(delay: number): Observable<any> {
+  public getDebouncedObservable(delay: number): Observable<{message:string}> {
     return this.debounceSubject.pipe(
       debounceTime(delay),
       switchMap((event) => this.getemployeeuser(event))

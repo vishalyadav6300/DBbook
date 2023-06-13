@@ -13,8 +13,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { FullCalendarModule } from '@fullcalendar/angular'
 
 import { AppHttpInterceptor } from './interceptors/app-http.interceptor';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
-import { PositivevalidationDirective } from './utilites/positivevalidation.directive';
+// import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CacheinterceptorInterceptor } from './interceptors/cacheinterceptor.interceptor';
 import { RequsettimeoutCompoent } from './requsettimeout/requsettimeout.component';
 import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
@@ -26,7 +25,6 @@ import { ResponsehandlingInterceptor } from './interceptors/responsehandling.int
     LoginComponent,
     NavbarComponent,
     PagenotfoundComponent,
-    PositivevalidationDirective,
     RequsettimeoutCompoent
   ],
   imports: [
@@ -36,7 +34,7 @@ import { ResponsehandlingInterceptor } from './interceptors/responsehandling.int
     HttpClientModule,
     RouterModule,
     FullCalendarModule,
-    NgMultiSelectDropDownModule
+    // NgMultiSelectDropDownModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AppHttpInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: CacheinterceptorInterceptor, multi: true },

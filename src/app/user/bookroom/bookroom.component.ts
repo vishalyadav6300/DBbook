@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IDropdownSettings } from 'ng-multiselect-dropdown';
+// import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { BookService } from 'src/app/book.service';
 import { endDateNotBeforeStartDateValidator } from 'src/app/utilites/endtimevalidation';
 import { dateNotBeforeTodayValidator } from 'src/app/utilites/previousdatevalidation';
@@ -28,8 +28,8 @@ export class BookroomComponent implements OnInit {
   roomname!: string
   empoylee_name: employee[] = []
   invites: invitesmodel[] = [];
-  invites_data: string[] = [];
-  dropdownSettingsforgenre: IDropdownSettings = {};
+  // invites_data: string[] = [];
+  // dropdownSettingsforgenre: IDropdownSettings = {};
 
 
   constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private bookSerice: BookService,
@@ -67,6 +67,7 @@ export class BookroomComponent implements OnInit {
       host: [this.empObj.employeeName, [Validators.required]],
       room: [this.roomname, [Validators.required]],
       invitees: this.formBuilder.array([this.formBuilder.control('')],
+      
       )
     })
     this.bookRoomForm.setValidators(endDateNotBeforeStartDateValidator('start_time','end_time'))
@@ -74,11 +75,11 @@ export class BookroomComponent implements OnInit {
     this.bookRoomForm.get('host')?.disable();
     this.bookRoomForm.get('room')?.disable();
 
-    this.dropdownSettingsforgenre = {
-      idField: 'item_id',
-      textField: 'item_text',
-      allowSearchFilter: true
-    };
+    // this.dropdownSettingsforgenre = {
+    //   idField: 'item_id',
+    //   textField: 'item_text',
+    //   allowSearchFilter: true
+    // };
   }
 
   get event_name() {
@@ -105,6 +106,12 @@ export class BookroomComponent implements OnInit {
     return this.bookRoomForm.get('invitees') as FormArray
   }
 
+  addAccess(): void {
+    this.invitees.push(this.formBuilder.control(''));
+  }
+  deleteAccess(index: number): void {
+    this.invitees.removeAt(index);
+  }
   onSubmit(): void {
     this.bookRoomForm.patchValue({
       host: this.empObj._id,
@@ -112,7 +119,8 @@ export class BookroomComponent implements OnInit {
     })
     this.bookRoomForm.get('host')?.enable();
     this.bookRoomForm.get('room')?.enable();
-    this.bookRoomForm.value.invitees = this.invites_data
+    // this.bookRoomForm.value.invitees = this.invites_data
+    console.log(this.bookRoomForm.value.invitees)
     this.bookSerice.addEvents(this.bookRoomForm.value).subscribe(res => {
       if (res.message == 'New event added:') {
         alert("added successfully")
@@ -123,20 +131,20 @@ export class BookroomComponent implements OnInit {
   }
 
 
-  onItemSelect(data: any) {
-    this.invites_data.push(data.item_id)
-  }
-  onItemallselect(data: any) {
-    this.invites_data = []
-    for (let ele of data) {
-      this.invites_data.push(ele.item_id)
-    }
-  }
-  onItemdeselect(data: any) {
-    this.invites_data.splice(this.invites_data.indexOf(data.item_id), 1)
-  }
-  onItemdeselectall(data: any) {
-    this.invites_data = []
-  }
+  // onItemSelect(data: any) {
+  //   this.invites_data.push(data.item_id)
+  // }
+  // onItemallselect(data: any) {
+  //   this.invites_data = []
+  //   for (let ele of data) {
+  //     this.invites_data.push(ele.item_id)
+  //   }
+  // }
+  // onItemdeselect(data: any) {
+  //   this.invites_data.splice(this.invites_data.indexOf(data.item_id), 1)
+  // }
+  // onItemdeselectall(data: any) {
+  //   this.invites_data = []
+  // }
 
 }

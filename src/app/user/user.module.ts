@@ -8,12 +8,11 @@ import { BookroomComponent } from './bookroom/bookroom.component';
 import { DisplayroomComponent } from './displayroom/displayroom.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {FullCalendarModule} from '@fullcalendar/angular'
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+// import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SearchPipe } from '../pipes/search.pipe';
 import { UserprofileComponent } from './userprofile/userprofile.component'
 import { DateconversionPipe } from '../pipes/dateconversion.pipe';
 import {NgxPaginationModule} from 'ngx-pagination'
-import { LoadingDirective } from '../utilites/Loadingspinner';
 import { UserRoutingModule } from './user-routing.module';
 
 
@@ -27,15 +26,14 @@ import { UserRoutingModule } from './user-routing.module';
     DisplayroomComponent,
     SearchPipe,
     UserprofileComponent,
-    DateconversionPipe,
-    LoadingDirective
+    DateconversionPipe
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
     FullCalendarModule,
-    NgMultiSelectDropDownModule,
+    // NgMultiSelectDropDownModule,
     NgxPaginationModule
   ]
 })

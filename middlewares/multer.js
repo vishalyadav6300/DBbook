@@ -1,6 +1,9 @@
 //import cloudinary
 const cloudinary=require('cloudinary').v2;
 
+//config the dotenv
+require("dotenv").config()
+
 //import multer
 const multer=require('multer')
 
@@ -11,9 +14,9 @@ const { CloudinaryStorage }=require('multer-storage-cloudinary')
 
 // Configuration 
 cloudinary.config({ 
-   cloud_name: 'mogalamohnivishal',
-   api_key: '913125216547184',
-   api_secret: '-buEd72983pclaadfO_mo_AkXN4'
+   cloud_name: process.env.cloud_name,
+   api_key: process.env.api_key,
+   api_secret: process.env.api_secret
  });
 
   
